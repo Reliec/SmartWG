@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SmartWG</string>
+    <string name="Email">E-Mail</string>
+    <string name="Password">Password</string>
+    <string name="forgotPassword">Forgot your password ?</string>
+    <string name="staySignedIn">Stay signed In </string>
+    <string name="signIn">Sign In</string>
+    <string name="signUp">Sign Up</string>
 </resources>

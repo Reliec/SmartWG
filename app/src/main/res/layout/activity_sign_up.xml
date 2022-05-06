@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    tools:context=".HomescreenActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/back"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text=""
+                tools:layout_editor_absoluteX="179dp"
+                tools:layout_editor_absoluteY="356dp" />
+
+            <TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:padding="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="Name"/>
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="type Name"
+                    android:inputType="text"
+                    android:textColor="@color/black" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:padding="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="First Name" />
+
+                <EditText
+                    android:id="@+id/etFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="type first name"
+                    android:inputType="text"
+                    android:textColor="@color/black" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:padding="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="SA Code" />
+
+                <EditText
+                    android:id="@+id/etSACode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="type SA Code"
+                    android:inputType="numberSigned"
+                    android:shadowColor="#EAE7E8"
+                    android:textColor="@color/black" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:padding="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="E-Mail" />
+
+                <EditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="type E-Mail"
+                    android:inputType="textEmailAddress"
+                    android:shadowColor="#FFFFFF"
+                    android:textColor="@color/black" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:padding="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="Confirm E-Mail " />
+
+                <EditText
+                    android:id="@+id/etEmail2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="confirm E-Mail"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:padding="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="Password" />
+
+                <EditText
+                    android:id="@+id/etPasswordSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="type Password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/black" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:padding="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="Confirm Passwort" />
+
+                <EditText
+                    android:id="@+id/etPassword2SignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="confirm Passwort"
+                    android:inputType="textWebPassword"
+                    android:shadowColor="#FFFFFF"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <CheckBox
+                android:id="@+id/cboxPrivacyPolicy"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="I confirm the privacy policy" />
+
+            <CheckBox
+                android:id="@+id/cboxTermsOfService"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="5dp"
+                android:text="I accept to the Terms of service of Smart WG" />
+
+            <Button
+                android:id="@+id/bRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_background"
+                android:text="@string/signUp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+
+
+        </TableLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -23,7 +23,6 @@ class RecycAdapterUser(): RecyclerView.Adapter<RecycAdapterUser.MyViewHolder>() 
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.itemView.tvTest.text = myList?.get(position)?.NAME
     }
 
     fun setData(newList : List<User>){
