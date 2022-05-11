@@ -45,10 +45,10 @@ class MainActivity : AppCompatActivity() {
         var loginValid: Boolean = false
 
         if (etEmail.text.toString() == "") {
-            etEmail.error = "Leeres Feld Benutzername";
+            etEmail.error = "Empty field username";
         }
         if (etPassword.text.toString() == "") {
-            etPassword.error = "Leeres Feld Passwort"
+            etPassword.error = "Empty field password"
         } else {
             loginValid = true
         }
@@ -84,11 +84,13 @@ class MainActivity : AppCompatActivity() {
                             val intent = Intent(this@MainActivity, HomescreenActivity::class.java)
                             startActivity(intent)
                         }
-                        Toast.makeText(
-                            this@MainActivity,
-                            "Benutzername existiert nicht oder das Passwort ist falsch !",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        else {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "Username does not exist or password is wrong",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
                     }
                 }
             })
