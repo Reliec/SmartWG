@@ -63,34 +63,30 @@ class MainActivity : AppCompatActivity() {
         viewModel.getUserWherePasswordViewM(etEmail.text.toString(), etPassword.text.toString())
         viewModel.userWherePasswordResponse.observe(
             this,
-            object : androidx.lifecycle.Observer<Response<List<User>>> {
-                override fun onChanged(t: Response<List<User>>?) {
-                    for (i in t?.body()!!) {
-                        System.out.println(t?.body()?.get(0)?.EMAIL)
-                        System.out.println(t?.body()?.get(0)?.PASSWORD)
+            Observer { response ->
+                for (i in response?.body()!!) {
+                    System.out.println(response?.body()?.get(0)?.EMAIL)
+                    System.out.println(response?.body()?.get(0)?.PASSWORD)
 
-                        if (t?.body()?.get(0)?.EMAIL.toString() == etEmail.text.toString() &&
-                            t?.body()?.get(0)?.PASSWORD.toString() == etPassword.text.toString()
-                        ) {
-                            globals.userEmail = t?.body()?.get(0)?.EMAIL
-                            globals.userPassword = t?.body()?.get(0)?.PASSWORD
+                    if (response?.body()?.get(0)?.EMAIL.toString() == etEmail.text.toString() &&
+                        response?.body()?.get(0)?.PASSWORD.toString() == etPassword.text.toString()
+                    ) {
+                        globals.userEmail = response?.body()?.get(0)?.EMAIL
+                        globals.userPassword = response?.body()?.get(0)?.PASSWORD
 
-                            Toast.makeText(
-                                this@MainActivity,
-                                "Login successful !",
-                                Toast.LENGTH_LONG
-                            )
-                                .show()
-                            val intent = Intent(this@MainActivity, HomescreenActivity::class.java)
-                            startActivity(intent)
-                        }
-                        else {
-                            Toast.makeText(
-                                this@MainActivity,
-                                "Username does not exist or password is wrong",
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Login successful !",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        val intent = Intent(this@MainActivity, HomescreenActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Username does not exist or password is wrong",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 }
             })
