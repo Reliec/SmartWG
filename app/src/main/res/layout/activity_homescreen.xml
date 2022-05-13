@@ -20,6 +20,15 @@
         android:layout_marginEnd="20dp"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:text="@string/forgotPassword"
+            android:textColor="@color/white" />
+
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -28,11 +37,6 @@
             android:cropToPadding="false"
             android:src="@drawable/houselogo" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            />
 
         </LinearLayout>
     </ScrollView>
