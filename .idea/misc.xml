@@ -5,7 +5,6 @@
       <map>
         <entry key="..\:/Users/Oskar/AndroidStudioProjects/SmartWG/app/src/main/res/drawable/back.xml" value="0.2225" />
         <entry key="..\:/Users/Oskar/AndroidStudioProjects/SmartWG/app/src/main/res/drawable/button_background.xml" value="0.2225" />
-        <entry key="..\:/Users/Oskar/AndroidStudioProjects/SmartWG/app/src/main/res/drawable/homescreen_elemnts_style.xml" value="0.329" />
         <entry key="..\:/Users/Oskar/AndroidStudioProjects/SmartWG/app/src/main/res/drawable/ic_launcher_background.xml" value="0.196" />
         <entry key="..\:/Users/Oskar/AndroidStudioProjects/SmartWG/app/src/main/res/drawable/login_background.xml" value="0.113" />
         <entry key="..\:/Users/Oskar/AndroidStudioProjects/SmartWG/app/src/main/res/drawable/login_edit_background.xml" value="0.2225" />
@@ -16,8 +15,8 @@
         <entry key="..\:/workspace/AndroidStudio/SmartWG/app/src/main/res/layout/activity_homescreen.xml" value="0.37182971014492755" />
         <entry key="..\:/workspace/AndroidStudio/SmartWG/app/src/main/res/layout/activity_main.xml" value="0.37182971014492755" />
         <entry key="..\:/workspace/AndroidStudio/SmartWG/app/src/main/res/layout/activity_shopping_list.xml" value="0.37182971014492755" />
-        <entry key="..\:/workspace/AndroidStudio/SmartWG/app/src/main/res/layout/activity_shopping_list_instance.xml" value="0.37182971014492755" />
-        <entry key="..\:/workspace/AndroidStudio/SmartWG/app/src/main/res/layout/activity_shopping_list_overview.xml" value="0.25" />
+        <entry key="..\:/workspace/AndroidStudio/SmartWG/app/src/main/res/layout/activity_shopping_list_instance.xml" value="0.25" />
+        <entry key="..\:/workspace/AndroidStudio/SmartWG/app/src/main/res/layout/activity_shopping_list_overview.xml" value="0.33" />
         <entry key="..\:/workspace/AndroidStudio/SmartWG/app/src/main/res/layout/activity_sign_up.xml" value="0.37182971014492755" />
       </map>
     </option>
