@@ -73,6 +73,12 @@ class MainActivity : AppCompatActivity() {
                     ) {
                         globals.userEmail = response?.body()?.get(0)?.EMAIL
                         globals.userPassword = response?.body()?.get(0)?.PASSWORD
+                        globals.userId = response?.body()?.get(0)?.ID
+                        globals.userFirstName = response?.body()?.get(0)?.FIRST_NAME
+                        globals.userLastName = response?.body()?.get(0)?.NAME
+                        globals.userSACode = response?.body()?.get(0)?.SACODE
+
+                        System.out.println(response?.body())
 
                         Toast.makeText(
                             this@MainActivity,

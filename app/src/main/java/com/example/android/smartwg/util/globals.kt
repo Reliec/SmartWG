@@ -6,4 +6,7 @@ object globals {
     var userId: Int? = 0
     var userEmail: String? = ""
     var userPassword: String? = ""
+    var userFirstName: String? = ""
+    var userLastName: String? = ""
+    var userSACode: Int? = 0
 }
