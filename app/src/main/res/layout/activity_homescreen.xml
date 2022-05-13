@@ -21,7 +21,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="150dp">
 
                 <TextView
                     android:id="@+id/tvWCStatus"
@@ -29,10 +30,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/homescreen_elemnts_style"
+                    android:background="@drawable/button_background"
                     android:padding="10dp"
                     android:text="@string/WCStatus"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/bWGB"
@@ -42,10 +43,10 @@
                     android:layout_marginStart="200dp"
                     android:layout_marginBottom="10dp"
                     android:layout_toEndOf="@id/tvWCStatus"
-                    android:background="@drawable/homescreen_elemnts_style"
+                    android:background="@drawable/button_background"
                     android:padding="10dp"
                     android:text="@string/WGBs"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white" />
 
             </RelativeLayout>
 
@@ -54,6 +55,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="30dp"
                 android:adjustViewBounds="true"
                 android:cropToPadding="false"
                 android:src="@drawable/houselogo" />
@@ -61,7 +63,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="50dp"
                 android:padding="10dp"
                 android:text="@string/WGName"
                 android:textAlignment="center"
@@ -70,38 +72,49 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp">
 
                 <Button
-                    android:id="@+id/bPutzplan"
+                    android:id="@+id/bHighscoreList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="30sp"
                     android:layout_gravity="end"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/homescreen_elemnts_style"
+                    android:background="@drawable/button_background"
                     android:padding="10dp"
-                    android:text="@string/Putzplan"
+                    android:text="@string/HighscoreList"
                     android:textAllCaps="false"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
                 <Button
                     android:id="@+id/bEinkaufsliste"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:layout_marginStart="230dp"
+                    android:layout_marginStart="220dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/homescreen_elemnts_style"
+                    android:background="@drawable/button_background"
                     android:padding="10dp"
-                    android:text="@string/Putzplan"
+                    android:text="@string/Shoppinglist"
                     android:textAllCaps="false"
-                    android:textColor="@color/black"
-                    android:textSize="30sp" />
-
-
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
             </RelativeLayout>
 
+            <Button
+                android:id="@+id/bEinstellungen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_background"
+                android:padding="10dp"
+                android:text="@string/Settings"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
 
         </LinearLayout>
