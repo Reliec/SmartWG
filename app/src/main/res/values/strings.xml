@@ -7,4 +7,8 @@
     <string name="signIn">Sign In</string>
     <string name="signUp">Sign Up</string>
     <string name="Homescreen">Homescreen</string>
+    <string name="WCStatus">WCStatus</string>
+    <string name="WGName">WG Name</string>
+    <string name="WGBs">WGBs</string>
+    <string name="Putzplan">Putzplan</string>
 </resources>
