@@ -10,10 +10,8 @@
     <string name="WCStatus">WCStatus</string>
     <string name="WGName">WG Name</string>
     <string name="WGBs">WGBs</string>
-<<<<<<< HEAD
     <string name="Putzplan">Putzplan</string>
     <string name="Einkaufsliste">Einkaufsliste</string>
-=======
     <string name="HighscoreList">Highscorelist</string>
     <string name="Shoppinglist">Shopping list</string>
     <string name="Settings">Settings</string>
@@ -22,5 +20,4 @@
     <string name="ChooseRoom">Choose the room</string>
     <string name="Highscore">Highscore</string>
     <string name="Plus">+</string>
->>>>>>> c1de500bf14accf679f79f64348ea224e95faf7b
 </resources>
