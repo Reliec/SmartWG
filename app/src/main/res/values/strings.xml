@@ -6,4 +6,5 @@
     <string name="staySignedIn">Stay signed In </string>
     <string name="signIn">Sign In</string>
     <string name="signUp">Sign Up</string>
+    <string name="Homescreen">Homescreen</string>
 </resources>
