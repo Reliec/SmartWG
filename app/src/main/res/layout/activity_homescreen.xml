@@ -89,7 +89,7 @@
                     android:textSize="20sp" />
 
                 <Button
-                    android:id="@+id/bEinkaufsliste"
+                    android:id="@+id/bShoppingList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"

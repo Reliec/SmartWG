@@ -3,19 +3,15 @@ package com.example.android.smartwg
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.android.smartwg.model.User
 import com.example.android.smartwg.repository.Repository
 import com.example.myapplication.util.globals
-import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
+class SignInActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
 
@@ -81,15 +77,15 @@ class MainActivity : AppCompatActivity() {
                         System.out.println(response?.body())
 
                         Toast.makeText(
-                            this@MainActivity,
+                            this@SignInActivity,
                             "Login successful !",
                             Toast.LENGTH_LONG
                         ).show()
-                        val intent = Intent(this@MainActivity, HomescreenActivity::class.java)
+                        val intent = Intent(this@SignInActivity, HomescreenActivity::class.java)
                         startActivity(intent)
                     } else {
                         Toast.makeText(
-                            this@MainActivity,
+                            this@SignInActivity,
                             "Username does not exist or password is wrong",
                             Toast.LENGTH_LONG
                         ).show()

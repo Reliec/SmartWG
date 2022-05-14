@@ -11,7 +11,7 @@
     <string name="WGName">WG Name</string>
     <string name="WGBs">WGBs</string>
     <string name="Putzplan">Putzplan</string>
-    <string name="Einkaufsliste">Einkaufsliste</string>
+    <string name="ShoppingLists">ShoppingLists</string>
     <string name="HighscoreList">Highscorelist</string>
     <string name="Shoppinglist">Shopping list</string>
     <string name="Settings">Settings</string>
@@ -20,4 +20,7 @@
     <string name="ChooseRoom">Choose the room</string>
     <string name="Highscore">Highscore</string>
     <string name="Plus">+</string>
+    <string name="author">Author</string>
+    <string name="lastEdited">mm::hh dd::mm::yy</string>
+    <string name="title">Title</string>
 </resources>

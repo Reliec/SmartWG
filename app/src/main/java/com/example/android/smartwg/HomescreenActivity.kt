@@ -16,6 +16,12 @@ class HomescreenActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val bShoppingList = findViewById<Button>(R.id.bShoppingList)
+        bShoppingList.setOnClickListener {
+            val intent = Intent(this, ShoppingListOverviewActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
 }
