@@ -15,7 +15,7 @@ class RecycAdapterHighscore() : RecyclerView.Adapter<RecycAdapterHighscore.MyVie
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecycAdapterHighscore.MyViewHolder {
-        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_layout_shopping_list_boxes,parent,false))
+        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_layout_highscore,parent,false))
     }
 
     override fun getItemCount(): Int {
