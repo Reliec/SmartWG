@@ -23,14 +23,7 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
         val viewModelFactory = MainViewModelFactory(repository)
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        setupRecyclerViewShoppingList()
 
-    }
-
-    private fun setupRecyclerViewShoppingList() {
-        recyclerViewShoppingList.adapter = recAdapterShoppingListOverview
-        recyclerViewShoppingList.layoutManager = LinearLayoutManager(this) // May have to take something different here
-        recylcerViewShoppingList.setNestedScrollingEnabled(false)
     }
 
 }
