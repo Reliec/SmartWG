@@ -35,7 +35,7 @@ class HighScoreListKitchenActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         setupRecyclerViewHighscore()
-        createHighscoreList(globals.userSACode, globals.userId,recAdapterKitchen, viewModel.highscoreResponse)
+        createHighscoreList(globals.userSACode, globals.userId)
 
         val bPlus = findViewById<Button>(R.id.bCreateNewKitchen)
         bPlus.setOnClickListener {
@@ -56,36 +56,27 @@ class HighScoreListKitchenActivity : AppCompatActivity() {
         recyclerViewKitchen.setNestedScrollingEnabled(false)
     }
 
-    private fun createHighscoreList(
-        SACODE: Int?,
-        USERID: Int ?,
-        recAdapter: RecycAdapterHighscore,
-        highscoreResponse: MutableLiveData<Response<List<Highscore>>>
-    ) {
-        viewModel.getHighscoresOfWGRepoViewM(SACODE, "Kitchen", USERID,highscoreResponse)
-        highscoreResponse.observe(this,
-            object : androidx.lifecycle.Observer<Response<List<Highscore>>> {
-                override fun onChanged(t: Response<List<Highscore>>?) {
-                    if (t != null) {
-                        if (t.isSuccessful) {
-                            t.body().let {
-                                if (it != null) {
-                                    recAdapter.setData(it)
-                                    Log.d("TEST : ", it.get(0).toString())
-                                }
-                            }
-                        }
-                    } else {
-                        if (t != null) {
-                            Toast.makeText(
-                                this@HighScoreListKitchenActivity,
-                                t.code().toString(),
-                                Toast.LENGTH_LONG
-                            ).show()
+    private fun createHighscoreList(SACODE: Int?, USERID: Int ?) {
+        viewModel.getHighscoresOfWGRepoViewM(SACODE, "Kitchen", USERID)
+        viewModel.highscoreResponse.observe(this
+        ) { highscoreListResponse ->
+            if (highscoreListResponse != null) {
+                if (highscoreListResponse.isSuccessful) {
+                    highscoreListResponse.body().let {
+                        if (it != null) {
+                            recAdapterKitchen.setData(it)
+                            Log.d("TEST : ", it[0].toString())
                         }
                     }
                 }
-            })
+            } else {
+                Toast.makeText(
+                    this@HighScoreListKitchenActivity,
+                     "ERROR: HighscoreListResponse is null!",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 
     private fun insertNewHighscore(Date: String) {

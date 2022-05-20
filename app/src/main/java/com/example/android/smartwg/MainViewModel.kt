@@ -4,11 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.smartwg.model.Highscore
+import com.example.android.smartwg.model.ShoppingList
 import com.example.android.smartwg.model.User
 import com.example.android.smartwg.repository.Repository
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import java.util.*
 
 class MainViewModel(private val repository: Repository): ViewModel() {
 
@@ -16,6 +16,7 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     var userWherePasswordResponse: MutableLiveData<Response<List<User>>> = MutableLiveData();
     var echoStringResponse: MutableLiveData<Response<String>> = MutableLiveData()
     var highscoreResponse: MutableLiveData<Response<List<Highscore>>> = MutableLiveData()
+    var shoppingListResponse: MutableLiveData<Response<List<ShoppingList>>> = MutableLiveData()
 
     fun getUsersViewM(){
         viewModelScope.launch {
@@ -38,10 +39,10 @@ class MainViewModel(private val repository: Repository): ViewModel() {
         }
     }
 
-    fun getHighscoresOfWGRepoViewM(SACODE: Int?, ROOM :String, USERID : Int?,highscoreResponse: MutableLiveData<Response<List<Highscore>>>){
+    fun getHighscoresOfWGRepoViewM(SACODE: Int?, ROOM :String, USERID : Int?){
         viewModelScope.launch {
-            val repsonse = repository.getHighscoreOfWGRepo(SACODE, ROOM, USERID)
-            highscoreResponse.value = repsonse
+            val response = repository.getHighscoreOfWGRepo(SACODE, ROOM, USERID)
+            highscoreResponse.value = response
         }
     }
 
@@ -52,9 +53,10 @@ class MainViewModel(private val repository: Repository): ViewModel() {
         }
     }
 
-    fun getShoppingListsFromUser(USERID: Int?) {
+    fun getShoppingListsFromUserViewM(USERID: Int?) {
         viewModelScope.launch {
             val response = repository.getShoppingListsFromUserRepo(USERID)
+            shoppingListResponse.value = response
         }
     }
 }
