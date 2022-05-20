@@ -11,26 +11,46 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="2dp"
         android:background="@drawable/button_background"
         android:text="@string/ShoppingLists"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="418dp"
-        android:layout_height="719dp"
-        android:layout_marginTop="1dp"
-        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewShoppingListOverview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewShoppingListOverview"
+        android:layout_width="413dp"
+        android:layout_height="691dp"
+        android:layout_marginHorizontal="5dp"
+        android:background="@drawable/back"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.62"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/bCreateNewShoppingList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@drawable/button_background"
+        android:padding="1dp"
+        android:text="@string/Plus"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerViewShoppingListOverview"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewShoppingListOverview"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="@+id/recyclerViewShoppingListOverview"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        />
+        app:layout_constraintVertical_bias="0.95" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

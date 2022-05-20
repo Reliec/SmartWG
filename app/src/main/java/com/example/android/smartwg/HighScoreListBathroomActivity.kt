@@ -58,7 +58,7 @@ class HighScoreListBathroomActivity : AppCompatActivity() {
 
     fun createHighscoreList(SACODE: Int?, recAdapter: RecycAdapterHighscore, timetableResponse: MutableLiveData<Response<List<Highscore>>>){
         viewModel.getHighscoresOfWGRepoViewM(SACODE, "Bathroom",timetableResponse)
-        timetableResponse.observe(this,object:androidx.lifecycle.Observer<Response<List<Highscore>>>{
+        timetableResponse.observe(this, object:androidx.lifecycle.Observer<Response<List<Highscore>>>{
             override fun onChanged(t: Response<List<Highscore>>?) {
                 if(t != null){
                     if(t.isSuccessful){

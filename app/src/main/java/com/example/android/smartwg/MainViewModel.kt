@@ -51,4 +51,10 @@ class MainViewModel(private val repository: Repository): ViewModel() {
             echoStringResponse.value = response
         }
     }
+
+    fun getShoppingListsFromUser(USERID: Int?) {
+        viewModelScope.launch {
+            val response = repository.getShoppingListsFromUserRepo(USERID)
+        }
+    }
 }
