@@ -2,6 +2,7 @@ package com.example.android.smartwg.api
 
 import com.example.android.smartwg.model.Highscore
 import com.example.android.smartwg.model.ShoppingList
+import com.example.android.smartwg.model.ToiletStatus
 import com.example.android.smartwg.model.User
 import retrofit2.Response
 import retrofit2.http.*
@@ -44,6 +45,10 @@ interface APIService {
         @Field("ROOM") ROOM: String?,
         @Field("FIRST_NAME") FIRST_NAME: String?, @Field("NAME") NAME: String?
     ): Response<String>
+
+    @FormUrlEncoded
+    @POST("/GETTOILETSTATUS")
+    suspend fun getToiletStatus(@Field("SACODE")SACODE: Int?): Response<List<ToiletStatus>>
 
     @FormUrlEncoded
     @POST("/GETSHOPPINGLISTSFROMUSER")

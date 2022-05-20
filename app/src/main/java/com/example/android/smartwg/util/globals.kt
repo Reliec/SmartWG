@@ -9,4 +9,5 @@ object globals {
     var userFirstName: String? = ""
     var userLastName: String? = ""
     var userSACode: Int? = 0
+    var isToilet: Int? = 0
 }

@@ -4,6 +4,7 @@ import com.example.android.smartwg.api.RetrofitInstance
 import com.example.android.smartwg.model.User
 import com.example.android.smartwg.model.Highscore
 import com.example.android.smartwg.model.ShoppingList
+import com.example.android.smartwg.model.ToiletStatus
 import retrofit2.Response
 
 class Repository {
@@ -38,6 +39,12 @@ class Repository {
         NAME: String?
     ): Response<String> {
         return RetrofitInstance.api.createNewHighscore(USERID, SACODE, DATE, ROOM, FIRST_NAME, NAME)
+    }
+
+    suspend fun getToiletStatus(
+        SACODE: Int?
+    ):Response<List<ToiletStatus>>{
+        return RetrofitInstance.api.getToiletStatus(SACODE)
     }
 
     suspend fun getShoppingListsFromUserRepo(USERID: Int?): Response<List<ShoppingList>> {
