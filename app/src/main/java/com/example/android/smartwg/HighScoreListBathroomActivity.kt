@@ -35,7 +35,7 @@ class HighScoreListBathroomActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         setupRecyclerViewHighscore()
-        createHighscoreList(globals.userSACode, recAdapterBathroom, viewModel.highscoreResponse)
+        createHighscoreList(globals.userSACode, globals.userId, recAdapterBathroom, viewModel.highscoreResponse)
 
         val bPlus = findViewById<Button>(R.id.bCreateNewBathroom)
         bPlus.setOnClickListener {
@@ -56,8 +56,8 @@ class HighScoreListBathroomActivity : AppCompatActivity() {
         recyclerViewBathroom.setNestedScrollingEnabled(false)
     }
 
-    fun createHighscoreList(SACODE: Int?, recAdapter: RecycAdapterHighscore, timetableResponse: MutableLiveData<Response<List<Highscore>>>){
-        viewModel.getHighscoresOfWGRepoViewM(SACODE, "Bathroom",timetableResponse)
+    fun createHighscoreList(SACODE: Int?, USERID: Int?, recAdapter: RecycAdapterHighscore, timetableResponse: MutableLiveData<Response<List<Highscore>>>){
+        viewModel.getHighscoresOfWGRepoViewM(SACODE, "Bathroom",USERID,timetableResponse)
         timetableResponse.observe(this, object:androidx.lifecycle.Observer<Response<List<Highscore>>>{
             override fun onChanged(t: Response<List<Highscore>>?) {
                 if(t != null){

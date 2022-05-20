@@ -25,8 +25,8 @@ class Repository {
         return RetrofitInstance.api.createNewUser(FIRST_NAME, NAME, EMAIL, PASSWORD, SACode)
     }
 
-    suspend fun getHighscoreOfWGRepo(SACODE: Int?, ROOM: String): Response<List<Highscore>> {
-        return RetrofitInstance.api.getHighscoreOfWG(SACODE, ROOM)
+    suspend fun getHighscoreOfWGRepo(SACODE: Int?, ROOM: String, USERID: Int?): Response<List<Highscore>> {
+        return RetrofitInstance.api.getHighscoreOfWG(SACODE, ROOM, USERID)
     }
 
     suspend fun createNewHighscoreRepo(

@@ -38,9 +38,9 @@ class MainViewModel(private val repository: Repository): ViewModel() {
         }
     }
 
-    fun getHighscoresOfWGRepoViewM(SACODE: Int?, ROOM :String, highscoreResponse: MutableLiveData<Response<List<Highscore>>>){
+    fun getHighscoresOfWGRepoViewM(SACODE: Int?, ROOM :String, USERID : Int?,highscoreResponse: MutableLiveData<Response<List<Highscore>>>){
         viewModelScope.launch {
-            val repsonse = repository.getHighscoreOfWGRepo(SACODE, ROOM)
+            val repsonse = repository.getHighscoreOfWGRepo(SACODE, ROOM, USERID)
             highscoreResponse.value = repsonse
         }
     }

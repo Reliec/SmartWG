@@ -32,7 +32,8 @@ interface APIService {
     @POST("/GETHIGHSCORESOFWG")
     suspend fun getHighscoreOfWG(
         @Field("SACODE") SACODE: Int?,
-        @Field("ROOM") ROOM: String
+        @Field("ROOM") ROOM: String,
+        @Field("USERID")USERID: Int?
     ): Response<List<Highscore>>
 
     @FormUrlEncoded

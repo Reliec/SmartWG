@@ -35,7 +35,7 @@ class HighScoreListKitchenActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         setupRecyclerViewHighscore()
-        createHighscoreList(globals.userSACode, recAdapterKitchen, viewModel.highscoreResponse)
+        createHighscoreList(globals.userSACode, globals.userId,recAdapterKitchen, viewModel.highscoreResponse)
 
         val bPlus = findViewById<Button>(R.id.bCreateNewKitchen)
         bPlus.setOnClickListener {
@@ -58,10 +58,11 @@ class HighScoreListKitchenActivity : AppCompatActivity() {
 
     private fun createHighscoreList(
         SACODE: Int?,
+        USERID: Int ?,
         recAdapter: RecycAdapterHighscore,
         highscoreResponse: MutableLiveData<Response<List<Highscore>>>
     ) {
-        viewModel.getHighscoresOfWGRepoViewM(SACODE, "Kitchen", highscoreResponse)
+        viewModel.getHighscoresOfWGRepoViewM(SACODE, "Kitchen", USERID,highscoreResponse)
         highscoreResponse.observe(this,
             object : androidx.lifecycle.Observer<Response<List<Highscore>>> {
                 override fun onChanged(t: Response<List<Highscore>>?) {
