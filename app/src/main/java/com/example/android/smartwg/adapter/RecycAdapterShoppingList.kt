@@ -6,11 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.smartwg.R
 import com.example.android.smartwg.model.ShoppingList
-import kotlinx.android.synthetic.main.row_layout_highscore.view.*
 import kotlinx.android.synthetic.main.row_layout_shopping_list_boxes.view.*
 
 class RecycAdapterShoppingList() : RecyclerView.Adapter<RecycAdapterShoppingList.MyViewHolder>(){
-    private var myList:List<ShoppingList> = emptyList<ShoppingList>();
+    private var shoppingListList:List<ShoppingList> = emptyList<ShoppingList>();
 
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
@@ -20,12 +19,16 @@ class RecycAdapterShoppingList() : RecyclerView.Adapter<RecycAdapterShoppingList
     }
 
     override fun onBindViewHolder(holder: RecycAdapterShoppingList.MyViewHolder, position: Int) {
-        holder.itemView.tvAuthor.text = myList?.get(position)?.AUTHOR.toString()
-        holder.itemView.tvTitle.text = myList?.get(position)?.TITLE
-        holder.itemView.tvLastEdited.text = myList?.get(position)?.LAST_EDITED
+        holder.itemView.tvAuthor.text = shoppingListList?.get(position)?.AUTHOR.toString()
+        holder.itemView.tvTitle.text = shoppingListList?.get(position)?.TITLE
+        holder.itemView.tvLastEdited.text = shoppingListList?.get(position)?.LAST_EDITED
     }
 
     override fun getItemCount(): Int {
-        return myList.size
+        return shoppingListList.size
+    }
+
+    fun setData(shoppingListListIn : List<ShoppingList>) {
+        shoppingListList = shoppingListListIn
     }
 }

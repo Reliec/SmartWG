@@ -1,15 +1,13 @@
 package com.example.android.smartwg
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.smartwg.adapter.RecycAdapterShoppingList
 import com.example.android.smartwg.repository.Repository
 import com.example.myapplication.util.globals
-import kotlinx.android.synthetic.main.activity_high_score_list_bathroom.*
 import kotlinx.android.synthetic.main.activity_shopping_list_overview.*
 
 class ShoppingListOverviewActivity : AppCompatActivity() {
@@ -28,13 +26,36 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         setupRecyclerViewShoppingList()
-        viewModel.getShoppingListsFromUser(globals.userId)
+        getShoppingList(globals.userId)
 
         val bAddShoppingList = findViewById<Button>(R.id.bCreateNewShoppingList)
         bAddShoppingList.setOnClickListener {
             // TODO: Overlay-Form for creating a new Shopping List
 
-            createShoppingList(globals.userId)
+            // createShoppingList(globals.userId)
+        }
+
+    }
+
+    private fun getShoppingList(USERID: Int?) {
+        viewModel.getShoppingListsFromUserViewM(globals.userId)
+        viewModel.shoppingListResponse.observe(this
+        ) { shoppingListResponse ->
+            if (shoppingListResponse != null) {
+                if (shoppingListResponse.isSuccessful) {
+                    shoppingListResponse.body().let {
+                        if (it != null) {
+                            recAdapterShoppingListOverview.setData(it)
+                        }
+                    }
+                }
+            } else {
+                Toast.makeText(
+                    this@ShoppingListOverviewActivity,
+                    "Error: ShoppingListRepsonse is null!",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
 
     }
