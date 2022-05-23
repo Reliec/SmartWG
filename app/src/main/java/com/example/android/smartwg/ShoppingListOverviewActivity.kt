@@ -5,9 +5,11 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.smartwg.adapter.RecycAdapterShoppingList
 import com.example.android.smartwg.repository.Repository
 import com.example.myapplication.util.globals
+import kotlinx.android.synthetic.main.activity_high_score_list_kitchen.*
 import kotlinx.android.synthetic.main.activity_shopping_list_overview.*
 
 class ShoppingListOverviewActivity : AppCompatActivity() {
@@ -46,6 +48,7 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
                     shoppingListResponse.body().let {
                         if (it != null) {
                             recAdapterShoppingListOverview.setData(it)
+                            System.out.println(it)
                         }
                     }
                 }
@@ -66,6 +69,8 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
 
     private fun setupRecyclerViewShoppingList() {
         recyclerViewShoppingListOverview.adapter = recAdapterShoppingListOverview
+        recyclerViewShoppingListOverview.layoutManager = LinearLayoutManager(this)
+        recyclerViewShoppingListOverview.setNestedScrollingEnabled(false)
     }
 
 }

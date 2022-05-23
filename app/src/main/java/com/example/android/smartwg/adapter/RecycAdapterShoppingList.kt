@@ -30,5 +30,6 @@ class RecycAdapterShoppingList() : RecyclerView.Adapter<RecycAdapterShoppingList
 
     fun setData(shoppingListListIn : List<ShoppingList>) {
         shoppingListList = shoppingListListIn
+        notifyDataSetChanged()
     }
 }
