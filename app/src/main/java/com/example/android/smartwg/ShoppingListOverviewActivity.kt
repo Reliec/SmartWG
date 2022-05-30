@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.smartwg.adapter.RecycAdapterShoppingList
 import com.example.android.smartwg.repository.Repository
 import com.example.myapplication.util.globals
-import kotlinx.android.synthetic.main.activity_high_score_list_kitchen.*
 import kotlinx.android.synthetic.main.activity_shopping_list_overview.*
 
 class ShoppingListOverviewActivity : AppCompatActivity() {
@@ -28,18 +27,19 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         setupRecyclerViewShoppingList()
-        getShoppingList(globals.userId)
+        getShoppingList()
 
-        val bAddShoppingList = findViewById<Button>(R.id.bCreateNewShoppingList)
-        bAddShoppingList.setOnClickListener {
-            // TODO: Overlay-Form for creating a new Shopping List
-
-            // createShoppingList(globals.userId)
+        val bCreateShoppingList = findViewById<Button>(R.id.bCreateNewShoppingList)
+        bCreateShoppingList.setOnClickListener {
+            createShoppingList()
         }
 
     }
 
-    private fun getShoppingList(USERID: Int?) {
+    /**
+     * @
+     */
+    private fun getShoppingList() {
         viewModel.getShoppingListsFromUserViewM(globals.userId)
         viewModel.shoppingListResponse.observe(this
         ) { shoppingListResponse ->
@@ -48,7 +48,7 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
                     shoppingListResponse.body().let {
                         if (it != null) {
                             recAdapterShoppingListOverview.setData(it)
-                            System.out.println(it)
+                            println(it)
                         }
                     }
                 }
@@ -63,9 +63,21 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
 
     }
 
-    private fun createShoppingList(USERID: Int?) {
-        TODO("Not yet implemented")
+    private fun createShoppingList() {
+        viewModel.createShoppingListFromUserViewM(globals.userId)
+
+        getShoppingList()
     }
+
+    private fun deleteShoppingList() {
+        viewModel.deleteShoppingListFromUserViewM(globals.userId)
+    }
+
+    private fun editShoppingList() {
+        TODO("NOT YET IMPLEMENTED")
+        // viewModel.editShoppingListFromUserViewM(globals.userId, newTitle)
+    }
+
 
     private fun setupRecyclerViewShoppingList() {
         recyclerViewShoppingListOverview.adapter = recAdapterShoppingListOverview

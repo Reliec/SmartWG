@@ -20,6 +20,8 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     var highscoreResponse: MutableLiveData<Response<List<Highscore>>> = MutableLiveData()
     var shoppingListResponse: MutableLiveData<Response<List<ShoppingList>>> = MutableLiveData()
     var toiletStatusResponse: MutableLiveData<Response<List<ToiletStatus>>> = MutableLiveData()
+    var createShoppingListResponse: MutableLiveData<Response<List<ShoppingList>>> = MutableLiveData()
+    var deleteShoppingListResponse: MutableLiveData<Response<List<ShoppingList>>> = MutableLiveData()
 
     fun getUsersViewM(){
         viewModelScope.launch {
@@ -70,10 +72,17 @@ class MainViewModel(private val repository: Repository): ViewModel() {
         }
     }
 
-    fun updateSettingsViewM(oldSACODE: Int?, newSACODE:Int?, oldEMAIL: String?, newEMAIL:String?, oldPASSWORD: String?, newPASSWORD:String?){
+    fun createShoppingListFromUserViewM(USERID: Int?) {
         viewModelScope.launch {
-            val response = repository.updateSettingsRepo(oldSACODE, newSACODE, oldEMAIL, newEMAIL, oldPASSWORD, newPASSWORD)
-            echoStringResponse.value = response
+            val response = repository.createShoppingListFromUserRepo(USERID)
+            createShoppingListResponse.value = response
+        }
+    }
+
+    fun deleteShoppingListFromUserViewM(USERID: Int?) {
+        viewModelScope.launch {
+            val response = repository.deleteShoppingListFromUserRepo(USERID)
+            deleteShoppingListResponse.value = response
         }
     }
 }

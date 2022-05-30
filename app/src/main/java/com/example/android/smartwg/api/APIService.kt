@@ -48,12 +48,26 @@ interface APIService {
 
     @FormUrlEncoded
     @POST("/GETTOILETSTATUS")
-    suspend fun getToiletStatus(@Field("SACODE")SACODE: Int?): Response<List<ToiletStatus>>
+    suspend fun getToiletStatus(
+        @Field("SACODE")SACODE: Int?)
+    : Response<List<ToiletStatus>>
 
     @FormUrlEncoded
     @POST("/GETSHOPPINGLISTSFROMUSER")
     suspend fun getShoppingListsFromUser(
-        @Field("AUTHOR") AUTHOR: Int?,
+        @Field("AUTHORID") AUTHORID: Int?,
+    ): Response<List<ShoppingList>>
+
+    @FormUrlEncoded
+    @POST("CREATESHOPPINGLISTFROMUSER")
+    suspend fun createShoppingListFromUser(
+        @Field("AUTHORID") AUTHORID: Int?
+    ): Response<List<ShoppingList>>
+
+    @FormUrlEncoded
+    @POST("DELETESHOPPINGLISTFROMUSER")
+    suspend fun deleteShoppingListFromUser(
+        @Field("AUTHORID") AUTHORID: Int?
     ): Response<List<ShoppingList>>
 
     @FormUrlEncoded
