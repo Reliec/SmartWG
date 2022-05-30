@@ -13,9 +13,13 @@
         android:theme="@style/Theme.SmartWG"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ShoppingListOverviewActivity"
             android:exported="false"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HighScoreListBathroomActivity"
             android:exported="false"

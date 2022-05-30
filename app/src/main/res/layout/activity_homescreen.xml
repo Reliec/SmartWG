@@ -41,8 +41,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_gravity="end"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="200dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:layout_toEndOf="@id/tvWCStatus"
                     android:background="@drawable/button_background"
@@ -63,6 +63,7 @@
                 android:src="@drawable/houselogo" />
 
             <TextView
+                android:id="@+id/tvWGName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="50dp"
@@ -75,7 +76,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp">
+                android:layout_marginBottom="30dp">
 
                 <Button
                     android:id="@+id/bHighscoreList"
@@ -106,16 +107,16 @@
             </RelativeLayout>
 
             <Button
-                android:id="@+id/bEinstellungen"
+                android:id="@+id/bSettings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/button_background"
                 android:padding="10dp"
                 android:text="@string/Settings"
                 android:textAllCaps="false"
-                android:layout_marginBottom="10dp"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 

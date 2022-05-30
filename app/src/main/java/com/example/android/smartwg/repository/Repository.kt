@@ -50,4 +50,8 @@ class Repository {
     suspend fun getShoppingListsFromUserRepo(USERID: Int?): Response<List<ShoppingList>> {
         return RetrofitInstance.api.getShoppingListsFromUser(USERID)
     }
+
+    suspend fun updateSettingsRepo(oldSACODE: Int?, newSACODE:Int?, oldEMAIL: String?, newEMAIL:String?, oldPASSWORD: String?, newPASSWORD:String?):Response<String>{
+        return RetrofitInstance.api.updateSettings(oldSACODE, newSACODE, oldEMAIL, newEMAIL, oldPASSWORD, newPASSWORD)
+    }
 }

@@ -20,6 +20,9 @@ class HomescreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_homescreen)
 
+        val tvWGName = findViewById<TextView>(R.id.tvWGName)
+        tvWGName.text = globals.userWGName
+
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
@@ -65,6 +68,12 @@ class HomescreenActivity : AppCompatActivity() {
         val bShoppingList = findViewById<Button>(R.id.bShoppingList)
         bShoppingList.setOnClickListener {
             val intent = Intent(this, ShoppingListOverviewActivity::class.java)
+            startActivity(intent)
+        }
+
+        val bSettings = findViewById<Button>(R.id.bSettings)
+        bSettings.setOnClickListener{
+            val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
 

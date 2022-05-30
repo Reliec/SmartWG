@@ -23,4 +23,7 @@
     <string name="author">Author</string>
     <string name="lastEdited">mm::hh dd::mm::yy</string>
     <string name="title">Title</string>
+    <string name="SACode">Shared Appartment Code</string>
+    <string name="Null">null</string>
+    <string name="confirmChanges">Confirm Changes</string>
 </resources>

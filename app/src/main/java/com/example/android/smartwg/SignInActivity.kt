@@ -10,6 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.smartwg.repository.Repository
 import com.example.myapplication.util.globals
+import retrofit2.Response
+import java.net.SocketTimeoutException
 
 class SignInActivity : AppCompatActivity() {
 
@@ -55,7 +57,6 @@ class SignInActivity : AppCompatActivity() {
     }
 
     fun dbLogin(etEmail: EditText, etPassword: EditText) {
-
         viewModel.getUserWherePasswordViewM(etEmail.text.toString(), etPassword.text.toString())
         viewModel.userWherePasswordResponse.observe(
             this,
@@ -65,7 +66,8 @@ class SignInActivity : AppCompatActivity() {
                     System.out.println(response?.body()?.get(0)?.PASSWORD)
 
                     if (response?.body()?.get(0)?.EMAIL.toString() == etEmail.text.toString() &&
-                        response?.body()?.get(0)?.PASSWORD.toString() == etPassword.text.toString()
+                        response?.body()
+                            ?.get(0)?.PASSWORD.toString() == etPassword.text.toString()
                     ) {
                         globals.userEmail = response?.body()?.get(0)?.EMAIL
                         globals.userPassword = response?.body()?.get(0)?.PASSWORD
@@ -73,6 +75,8 @@ class SignInActivity : AppCompatActivity() {
                         globals.userFirstName = response?.body()?.get(0)?.FIRST_NAME
                         globals.userLastName = response?.body()?.get(0)?.NAME
                         globals.userSACode = response?.body()?.get(0)?.SACODE
+                        globals.userWGGBS = response?.body()?.get(0)?.WGGBS
+                        globals.userWGName = response?.body()?.get(0)?.WGNAME
 
                         System.out.println(response?.body())
 

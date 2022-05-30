@@ -55,4 +55,13 @@ interface APIService {
     suspend fun getShoppingListsFromUser(
         @Field("AUTHOR") AUTHOR: Int?,
     ): Response<List<ShoppingList>>
+
+    @FormUrlEncoded
+    @PUT("UPDATESETTINGS")
+    suspend fun updateSettings(
+        @Field("oldSACODE")oldSACODE: Int ?, @Field("newSACODE") newSACODE: Int?,
+        @Field("oldEMAIL")oldEMAIL:String?, @Field("newEMAIL")newEMAIL: String?,
+        @Field("oldPASSWORD")oldPASSWORD: String?, @Field("newPASSWORD")newPASSWORD: String?
+    ):Response<String>
+
 }

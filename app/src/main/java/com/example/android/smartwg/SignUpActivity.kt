@@ -58,10 +58,11 @@ class SignUpActivity : AppCompatActivity() {
             etFirstName.error = "Empty field first name";
             return false
         }
-        if(etSACode.text.toString() == ""){
+
+        /*if(etSACode.text.toString() == ""){
             etSACode.error = "Empty field Shared Appartment Code";
             return false
-        }
+        }*/
         if(etEmail.text.toString() == ""){
             etEmail.error = "Empty field Email";
             return false
@@ -100,6 +101,9 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     fun signUpdb(etName : EditText, etFirstName: EditText, etSACode: EditText, etEmail:EditText, etPassword: EditText){
+        if(etSACode.text.length == 0){
+            etSACode.setText("3")
+        }
         viewModel.createNewUserViewM(etFirstName.text.toString(), etName.text.toString(), etEmail.text.toString(), etPassword.text.toString(), etSACode.text.toString().toInt())
         viewModel.echoStringResponse.observe(this, Observer{
                 response ->
