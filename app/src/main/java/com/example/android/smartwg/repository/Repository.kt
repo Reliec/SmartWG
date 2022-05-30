@@ -50,4 +50,12 @@ class Repository {
     suspend fun getShoppingListsFromUserRepo(USERID: Int?): Response<List<ShoppingList>> {
         return RetrofitInstance.api.getShoppingListsFromUser(USERID)
     }
+
+    suspend fun createShoppingListFromUserRepo(USERID: Int?): Response<List<ShoppingList>> {
+        return RetrofitInstance.api.createShoppingListFromUser(USERID)
+    }
+
+    suspend fun deleteShoppingListFromUserRepo(USERID: Int?): Response<List<ShoppingList>> {
+        return RetrofitInstance.api.deleteShoppingListFromUser(USERID)
+    }
 }
