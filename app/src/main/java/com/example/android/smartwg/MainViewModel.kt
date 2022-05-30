@@ -85,4 +85,11 @@ class MainViewModel(private val repository: Repository): ViewModel() {
             deleteShoppingListResponse.value = response
         }
     }
+
+    fun updateSettingsViewM(oldSACODE: Int?, newSACODE:Int?, oldEMAIL: String?, newEMAIL:String?, oldPASSWORD: String?, newPASSWORD:String?){
+        viewModelScope.launch {
+            val response = repository.updateSettingsRepo(oldSACODE, newSACODE, oldEMAIL, newEMAIL, oldPASSWORD, newPASSWORD)
+            echoStringResponse.value = response
+        }
+    }
 }
