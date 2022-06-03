@@ -78,4 +78,11 @@ interface APIService {
         @Field("oldPASSWORD")oldPASSWORD: String?, @Field("newPASSWORD")newPASSWORD: String?
     ):Response<String>
 
+    @FormUrlEncoded
+    @PUT("UPDATEWGBS")
+    suspend fun updateWGBS(
+        @Field("oldWGBs")oldWGBs:String?, @Field("newWGBs")newWGBs:String?,
+        @Field("SACode")SACode:Int?
+    ):Response<String>
+
 }

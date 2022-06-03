@@ -10,6 +10,6 @@ object globals {
     var userLastName: String? = ""
     var userSACode: Int? = 0
     var isToilet: Int? = 0
-    var userWGGBS: String? = ""
+    var userWGBs: String? = ""
     var userWGName: String? = ""
 }

@@ -75,7 +75,7 @@ class SignInActivity : AppCompatActivity() {
                         globals.userFirstName = response?.body()?.get(0)?.FIRST_NAME
                         globals.userLastName = response?.body()?.get(0)?.NAME
                         globals.userSACode = response?.body()?.get(0)?.SACODE
-                        globals.userWGGBS = response?.body()?.get(0)?.WGGBS
+                        globals.userWGBs = response?.body()?.get(0)?.WGGBS
                         globals.userWGName = response?.body()?.get(0)?.WGNAME
 
                         System.out.println(response?.body())

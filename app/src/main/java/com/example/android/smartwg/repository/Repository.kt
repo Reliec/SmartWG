@@ -62,4 +62,8 @@ class Repository {
     suspend fun updateSettingsRepo(oldSACODE: Int?, newSACODE:Int?, oldEMAIL: String?, newEMAIL:String?, oldPASSWORD: String?, newPASSWORD:String?):Response<String>{
         return RetrofitInstance.api.updateSettings(oldSACODE, newSACODE, oldEMAIL, newEMAIL, oldPASSWORD, newPASSWORD)
     }
+
+    suspend fun updateWGBSRepo(oldWGBs:String?, newWGBs:String?, SACODE: Int?):Response<String>{
+        return RetrofitInstance.api.updateWGBS(oldWGBs, newWGBs, SACODE)
+    }
 }

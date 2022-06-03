@@ -77,6 +77,12 @@ class HomescreenActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val bWGBs = findViewById<Button>(R.id.bWGB)
+        bWGBs.setOnClickListener{
+            val intent = Intent(this, WGBsActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun setToiletStatus(SACODE: Int?) {

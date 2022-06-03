@@ -27,6 +27,9 @@ class SettingsActivity : AppCompatActivity() {
         val tvPassword = findViewById<TextView>(R.id.edPassword)
         tvPassword.text = globals.userPassword
 
+        val tvWGBs = findViewById<TextView>(R.id.edWGBS)
+        tvWGBs.text = globals.userWGBs
+
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
@@ -34,11 +37,11 @@ class SettingsActivity : AppCompatActivity() {
         val bConfirmChanges = findViewById<Button>(R.id.bConfirmChanges)
 
         bConfirmChanges.setOnClickListener {
-            updateSettings(tvSharedAppartmentCode.text.toString().toInt(), tvEmail.text.toString(), tvPassword.text.toString())
+            updateSettings(tvSharedAppartmentCode.text.toString().toInt(), tvEmail.text.toString(), tvPassword.text.toString(), tvWGBs.text.toString())
         }
     }
 
-    private fun updateSettings(newSACODE: Int?, newEMAIL: String?, newPASSWORD : String?){
+    private fun updateSettings(newSACODE: Int?, newEMAIL: String?, newPASSWORD : String?, newWGBs:String?){
         viewModel.updateSettingsViewM(globals.userSACode, newSACODE, globals.userEmail, newEMAIL, globals.userPassword, newPASSWORD)
         viewModel.echoStringResponse.observe(
             this,
@@ -50,11 +53,26 @@ class SettingsActivity : AppCompatActivity() {
                     globals.userSACode = newSACODE
                     globals.userEmail = newEMAIL
                     globals.userPassword = newPASSWORD
+                    globals.userWGBs = newWGBs
 
-                    System.out.println(globals.userSACode.toString() + globals.userEmail.toString() + globals.userPassword.toString())
+                    System.out.println(globals.userSACode.toString() + globals.userEmail.toString() + globals.userPassword.toString() + globals.userWGBs.toString())
                 }
                 else{
                     Toast.makeText(this,response.code().toString() + "Update Settings failed", Toast.LENGTH_LONG).show()
+                }
+            }
+        )
+        Thread.sleep(1000)
+        viewModel.updateWGBSViewM(globals.userWGBs, newWGBs, globals.userSACode)
+        viewModel.echoStringResponse.observe(
+            this, Observer {
+                response ->
+                if(response.isSuccessful){
+                    var resp: String = response.body().toString()
+                    Toast.makeText(this, resp, Toast.LENGTH_LONG).show()
+                }
+                else{
+                    Toast.makeText(this, response.code().toString() + "Update WGBS failed", Toast.LENGTH_LONG).show()
                 }
             }
         )

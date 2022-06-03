@@ -92,4 +92,11 @@ class MainViewModel(private val repository: Repository): ViewModel() {
             echoStringResponse.value = response
         }
     }
+
+    fun updateWGBSViewM(oldWGBs:String?, newWGBs:String?, SACODE: Int?){
+        viewModelScope.launch {
+            val response = repository.updateWGBSRepo(oldWGBs, newWGBs, SACODE)
+            echoStringResponse.value = response
+        }
+    }
 }
