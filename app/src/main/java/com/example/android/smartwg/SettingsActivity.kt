@@ -53,7 +53,6 @@ class SettingsActivity : AppCompatActivity() {
                     globals.userSACode = newSACODE
                     globals.userEmail = newEMAIL
                     globals.userPassword = newPASSWORD
-                    globals.userWGBs = newWGBs
 
                     System.out.println(globals.userSACode.toString() + globals.userEmail.toString() + globals.userPassword.toString() + globals.userWGBs.toString())
                 }
@@ -70,6 +69,7 @@ class SettingsActivity : AppCompatActivity() {
                 if(response.isSuccessful){
                     var resp: String = response.body().toString()
                     Toast.makeText(this, resp, Toast.LENGTH_LONG).show()
+                    globals.userWGBs = newWGBs
                 }
                 else{
                     Toast.makeText(this, response.code().toString() + "Update WGBS failed", Toast.LENGTH_LONG).show()

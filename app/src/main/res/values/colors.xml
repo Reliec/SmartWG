@@ -13,4 +13,6 @@
     <color name="brown_500">#8A6052</color>
     <color name="green">#47F607</color>
     <color name="red">#F60723</color>
+    <color name="darkblue">#00589E</color>
+    <color name="lightGray">#CCC8D2DA</color>
 </resources>

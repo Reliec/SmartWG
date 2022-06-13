@@ -24,12 +24,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="50dp"
-                android:padding="10dp"
                 android:background="@drawable/button_background"
+                android:padding="10dp"
                 android:text="@string/Highscore"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp" />
+
+            <RelativeLayout
+                android:id="@+id/emptyLinearHighscoreBathroom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
             <Button
                 android:id="@+id/bCreateNewBathroom"
@@ -51,7 +56,7 @@
                 android:layout_marginHorizontal="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="30dp"
-                android:background="@drawable/back"
+                android:background="@drawable/back_big_stroke"
                 android:padding="5dp" />
 
         </LinearLayout>

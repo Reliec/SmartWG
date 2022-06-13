@@ -26,4 +26,5 @@
     <string name="SACode">SACode</string>
     <string name="Null">null</string>
     <string name="confirmChanges">Confirm Changes</string>
+    <string name="nameOfUser">nameOfUser</string>
 </resources>

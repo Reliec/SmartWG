@@ -1,10 +1,12 @@
 package com.example.android.smartwg
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.Toast
+import android.view.ViewGroup
+import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -26,6 +28,7 @@ class HighScoreListKitchenActivity : AppCompatActivity() {
         RecycAdapterHighscore()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_high_score_list_kitchen)
@@ -56,9 +59,11 @@ class HighScoreListKitchenActivity : AppCompatActivity() {
         recyclerViewKitchen.setNestedScrollingEnabled(false)
     }
 
-    private fun createHighscoreList(SACODE: Int?, USERID: Int ?) {
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun createHighscoreList(SACODE: Int?, USERID: Int?) {
         viewModel.getHighscoresOfWGRepoViewM(SACODE, "Kitchen", USERID)
-        viewModel.highscoreResponse.observe(this
+        viewModel.highscoreResponse.observe(
+            this
         ) { highscoreListResponse ->
             if (highscoreListResponse != null) {
                 if (highscoreListResponse.isSuccessful) {
@@ -68,11 +73,47 @@ class HighScoreListKitchenActivity : AppCompatActivity() {
                             Log.d("TEST : ", it[0].toString())
                         }
                     }
+
+                    var hashMap : HashMap<String, Int> = HashMap<String, Int> ()
+                    for(item in highscoreListResponse.body()!!){
+                        hashMap.merge(item.FIRST_NAME, 1,  { a, b -> a + b})
+                    }
+
+                    System.out.println(hashMap)
+
+                    var layout = findViewById<RelativeLayout>(R.id.emptyLinearHighscoreKitchen);
+                    var prevTextViewId = 0
+                    for (item in highscoreListResponse.body()!!) {
+                        if(hashMap.contains(item.FIRST_NAME)) {
+
+
+                            val textView = TextView(this)
+                            textView.layoutParams = LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.WRAP_CONTENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT
+                            )
+                            textView.setText(item.FIRST_NAME + ": " + hashMap.get(item.FIRST_NAME))
+                            var curTextViewId = prevTextViewId + 1
+                            textView.id = curTextViewId
+                            textView.textSize = 20.0f
+
+                            var params = RelativeLayout.LayoutParams(
+                                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                                RelativeLayout.LayoutParams.WRAP_CONTENT
+                            )
+                            params.addRule(RelativeLayout.BELOW, prevTextViewId)
+                            textView.layoutParams = params
+
+                            prevTextViewId = curTextViewId
+                            layout.addView(textView, params)
+                            hashMap.remove(item.FIRST_NAME)
+                        }
+                    }
                 }
             } else {
                 Toast.makeText(
                     this@HighScoreListKitchenActivity,
-                     "ERROR: HighscoreListResponse is null!",
+                    "ERROR: HighscoreListResponse is null!",
                     Toast.LENGTH_LONG
                 ).show()
             }

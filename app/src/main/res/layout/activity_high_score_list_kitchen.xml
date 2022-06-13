@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_background"
+    android:id="@+id/relativeLayoutHighscoreKitchen"
     tools:context=".HomescreenActivity">
 
     <ScrollView
@@ -17,19 +18,26 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:id="@+id/linearLayoutHighscoreKitchen"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:id="@+id/labelHighscoreKitchen"
                 android:layout_marginBottom="50dp"
-                android:padding="10dp"
                 android:background="@drawable/button_background"
+                android:padding="10dp"
                 android:text="@string/Highscore"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp" />
+
+            <RelativeLayout
+                android:id="@+id/emptyLinearHighscoreKitchen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
             <Button
                 android:id="@+id/bCreateNewKitchen"
@@ -51,9 +59,8 @@
                 android:layout_marginHorizontal="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="30dp"
-                android:background="@drawable/back"
+                android:background="@drawable/back_big_stroke"
                 android:padding="5dp"></androidx.recyclerview.widget.RecyclerView>
-
 
 
         </LinearLayout>

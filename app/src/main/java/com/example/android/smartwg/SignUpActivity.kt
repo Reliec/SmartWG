@@ -48,6 +48,11 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Test function
+     *
+     * @param etName test
+     */
     fun validateRegister(etName: EditText, etFirstName: EditText, etSACode: EditText, etEmail: EditText, etEmail2:EditText, etPassword: EditText, etPassword2:EditText): Boolean{
 
         if(etName.text.toString() == ""){
@@ -58,7 +63,6 @@ class SignUpActivity : AppCompatActivity() {
             etFirstName.error = "Empty field first name";
             return false
         }
-
         /*if(etSACode.text.toString() == ""){
             etSACode.error = "Empty field Shared Appartment Code";
             return false
