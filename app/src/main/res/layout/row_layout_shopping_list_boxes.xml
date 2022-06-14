@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    >
 
     <view
         android:id="@+id/ShoppingListView"
@@ -12,41 +13,41 @@
         android:layout_height="95dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
-        android:background="#00BCD4"
-        app:cardBackgroundColor="#4300D4A3"
+        android:background="#00FFFFFF"
+        app:cardBackgroundColor="#49876D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tvAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/back"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="12dp"
+        android:padding="3dp"
         android:text="@string/author"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:padding="3dp"
+        android:translationZ="90dp"
         app:layout_constraintBottom_toBottomOf="@+id/ShoppingListView"
-        app:layout_constraintEnd_toEndOf="@+id/ShoppingListView"
-        app:layout_constraintHorizontal_bias="0.12"
-        app:layout_constraintStart_toStartOf="@+id/ShoppingListView"
-        app:layout_constraintTop_toTopOf="@+id/ShoppingListView"
-        app:layout_constraintVertical_bias="0.74" />
+        app:layout_constraintStart_toStartOf="@+id/ShoppingListView" />
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/back"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:background="#00FFFFFF"
         android:padding="3dp"
         android:text="@string/title"
         android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/tvAuthor"
-        app:layout_constraintEnd_toEndOf="@+id/ShoppingListView"
-        app:layout_constraintHorizontal_bias="0.12"
+        android:translationZ="90dp"
         app:layout_constraintStart_toStartOf="@+id/ShoppingListView"
         app:layout_constraintTop_toTopOf="@+id/ShoppingListView" />
 
@@ -54,16 +55,15 @@
         android:id="@+id/tvLastEdited"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/back"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="12dp"
         android:padding="3dp"
         android:text="@string/lastEdited"
         android:textAlignment="center"
         android:textColor="@color/black"
+        android:textSize="12sp"
+        android:translationZ="90dp"
         app:layout_constraintBottom_toBottomOf="@+id/ShoppingListView"
-        app:layout_constraintEnd_toEndOf="@+id/ShoppingListView"
-        app:layout_constraintHorizontal_bias="0.86"
-        app:layout_constraintStart_toStartOf="@+id/ShoppingListView"
-        app:layout_constraintTop_toTopOf="@+id/ShoppingListView"
-        app:layout_constraintVertical_bias="0.74" />
+        app:layout_constraintEnd_toEndOf="@+id/ShoppingListView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
