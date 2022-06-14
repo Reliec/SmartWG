@@ -26,7 +26,7 @@
                 android:layout_gravity="center_horizontal"
                 android:adjustViewBounds="true"
                 android:cropToPadding="false"
-                android:src="@drawable/houselogo" />
+                android:src="@drawable/ic_baseline_home_24" />
 
             <EditText
                 android:id="@+id/etEmail"
