@@ -3,6 +3,7 @@ package com.example.android.smartwg
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
@@ -33,6 +34,17 @@ class SignUpActivity : AppCompatActivity() {
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+
+        etPassword2.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                if(validateRegister(etName, etFirstName, etSACode, etEmail, etEmail2, etPassword, etPassword2) && validateCheckbox(cboxPrivacyPolicy, cboxTermsOfService)){
+                    signUpdb(etName, etFirstName, etSACode, etEmail, etPassword)
+                }
+                true
+            } else {
+                false
+            }
+        }
 
         val bRegister = findViewById<Button>(R.id.bRegister)
         bRegister.setOnClickListener{
