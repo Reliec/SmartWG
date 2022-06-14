@@ -2,6 +2,7 @@ package com.example.android.smartwg
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -27,12 +28,23 @@ class SettingsActivity : AppCompatActivity() {
         val tvPassword = findViewById<TextView>(R.id.edPassword)
         tvPassword.text = globals.userPassword
 
-        val tvWGBs = findViewById<TextView>(R.id.edWGBS)
-        tvWGBs.text = globals.userWGBs
-
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+
+        getWGBS(globals.userSACode)
+
+        val tvWGBs = findViewById<TextView>(R.id.edWGBS)
+        tvWGBs.text = globals.userWGBs
+
+        tvWGBs.setOnEditorActionListener{v, actionId, event ->
+            if(actionId == EditorInfo.IME_ACTION_DONE){
+                updateSettings(tvSharedAppartmentCode.text.toString().toInt(), tvEmail.text.toString(), tvPassword.text.toString(), tvWGBs.text.toString())
+                true
+            }
+            else
+                false
+        }
 
         val bConfirmChanges = findViewById<Button>(R.id.bConfirmChanges)
 
@@ -76,5 +88,12 @@ class SettingsActivity : AppCompatActivity() {
                 }
             }
         )
+    }
+
+    private fun getWGBS(SACODE:Int?){
+        viewModel.getWGBSViewM(SACODE)
+        viewModel.wgbStringResponse.observe(this, Observer{ response ->
+            globals.userWGBs = response.body()?.get(0)?.WGGBS
+        })
     }
 }

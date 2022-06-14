@@ -1,15 +1,16 @@
 package com.example.android.smartwg.repository
 
 import com.example.android.smartwg.api.RetrofitInstance
-import com.example.android.smartwg.model.User
-import com.example.android.smartwg.model.Highscore
-import com.example.android.smartwg.model.ShoppingList
-import com.example.android.smartwg.model.ToiletStatus
+import com.example.android.smartwg.model.*
 import retrofit2.Response
 
 class Repository {
     suspend fun getUsersRepo(): Response<List<User>> {
         return RetrofitInstance.api.getUsers()
+    }
+
+    suspend fun getWGBSRepo(SACODE: Int?): Response<List<WGB>>{
+        return RetrofitInstance.api.getWGBS(SACODE)
     }
 
     suspend fun getUserWherePasswordRepo(EMAIL: String, PASSWORD: String): Response<List<User>> {

@@ -3,6 +3,7 @@ package com.example.android.smartwg
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -29,6 +30,18 @@ class SignInActivity : AppCompatActivity() {
         bSignUp.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
+        }
+
+        val etPassword = findViewById<EditText>(R.id.etPasswordLogin)
+        etPassword.setOnEditorActionListener{v, actionId, event ->
+            if(actionId == EditorInfo.IME_ACTION_DONE)
+            {
+                loginValidate()
+                true
+            }
+            else{
+                false
+            }
         }
 
         val bSignIn = findViewById<Button>(R.id.bSignIn)
