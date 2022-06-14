@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    >
+    android:background="@drawable/app_background"
+    android:visibility="visible">
 
     <view
         android:id="@+id/ShoppingListView"
         class="androidx.cardview.widget.CardView"
         android:layout_width="278dp"
         android:layout_height="95dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:background="#00FFFFFF"
         app:cardBackgroundColor="#49876D"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +27,7 @@
         android:id="@+id/tvAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="18dp"
         android:layout_marginBottom="12dp"
         android:padding="3dp"
         android:text="@string/author"
@@ -39,8 +40,8 @@
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:layout_marginStart="24dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
         android:layout_marginTop="12dp"
         android:background="#00FFFFFF"
         android:padding="3dp"
@@ -53,9 +54,9 @@
 
     <TextView
         android:id="@+id/tvLastEdited"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="18dp"
         android:layout_marginBottom="12dp"
         android:padding="3dp"
         android:text="@string/lastEdited"
@@ -65,5 +66,51 @@
         android:translationZ="90dp"
         app:layout_constraintBottom_toBottomOf="@+id/ShoppingListView"
         app:layout_constraintEnd_toEndOf="@+id/ShoppingListView" />
+
+    <ImageButton
+        android:id="@+id/vEditShoppingList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="18dp"
+        android:padding="3dp"
+        android:visibility="visible"
+        android:src="@drawable/ic_baseline_edit_24"
+        android:textColorLink="#AEEA00"
+        android:translationZ="90dp"
+        app:layout_constraintEnd_toEndOf="@+id/ShoppingListView"
+        app:layout_constraintTop_toTopOf="@+id/ShoppingListView"
+        android:contentDescription="TODO" />
+
+    <ImageButton
+        android:id="@+id/vConfirmShoppingListChanges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="18dp"
+        android:padding="3dp"
+        android:src="@drawable/ic_baseline_check_24"
+        android:textColorHighlight="#00FFFFFF"
+        android:textColorLink="#00FFFFFF"
+        android:translationZ="90dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/ShoppingListView"
+        app:layout_constraintTop_toTopOf="@+id/ShoppingListView"
+        android:contentDescription="TODO" />
+
+    <ImageButton
+        android:id="@+id/vRemoveShoppingList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:rotation="45"
+        android:src="@drawable/ic_baseline_remove_cross_24"
+        android:translationZ="90dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ShoppingListView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="TODO" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

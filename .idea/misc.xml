@@ -67,6 +67,7 @@
         <entry key="..\:/workspace/Android_Workspace/SmartWG/app/src/main/res/drawable/form_background.xml" value="0.252" />
         <entry key="..\:/workspace/Android_Workspace/SmartWG/app/src/main/res/drawable/form_backround.xml" value="0.1" />
         <entry key="..\:/workspace/Android_Workspace/SmartWG/app/src/main/res/drawable/homescreen_elemnts_style.xml" value="0.2145" />
+        <entry key="..\:/workspace/Android_Workspace/SmartWG/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.25" />
         <entry key="..\:/workspace/Android_Workspace/SmartWG/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.2145" />
         <entry key="..\:/workspace/Android_Workspace/SmartWG/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.189" />
         <entry key="..\:/workspace/Android_Workspace/SmartWG/app/src/main/res/drawable/ic_baseline_shopping_basket_24.xml" value="0.189" />
@@ -86,7 +87,8 @@
         <entry key="..\:/workspace/Android_Workspace/SmartWG/app/src/main/res/layout/activity_sign_up.xml" value="0.1078125" />
         <entry key="..\:/workspace/Android_Workspace/SmartWG/app/src/main/res/layout/activity_wgbs.xml" value="0.1078125" />
         <entry key="..\:/workspace/Android_Workspace/SmartWG/app/src/main/res/layout/row_layout_highscore.xml" value="0.1078125" />
-        <entry key="..\:/workspace/Android_Workspace/SmartWG/app/src/main/res/layout/row_layout_shopping_list_boxes.xml" value="0.1" />
+        <entry key="..\:/workspace/Android_Workspace/SmartWG/app/src/main/res/layout/row_layout_highscore_darkblue.xml" value="0.24635416666666668" />
+        <entry key="..\:/workspace/Android_Workspace/SmartWG/app/src/main/res/layout/row_layout_shopping_list_boxes.xml" value="0.4" />
       </map>
     </option>
   </component>

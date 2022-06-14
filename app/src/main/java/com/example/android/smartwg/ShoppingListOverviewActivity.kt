@@ -1,7 +1,11 @@
 package com.example.android.smartwg
 
+import android.media.Image
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -30,10 +34,25 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
         getShoppingList()
 
         val bCreateShoppingList = findViewById<Button>(R.id.bCreateNewShoppingList)
+        val bEditShoppingList = findViewById<ImageButton>(R.id.vEditShoppingList)
+        val bRemoveShippingList = findViewById<ImageButton>(R.id.vRemoveShoppingList)
+        val bConfirmShoppingListChanges = findViewById<ImageButton>(R.id.vConfirmShoppingListChanges)
+        /**
         bCreateShoppingList.setOnClickListener {
             createShoppingList()
         }
+        bEditShoppingList.setOnClickListener {
+            bEditShoppingList.visibility = View.GONE
+            bConfirmShoppingListChanges.visibility = View.VISIBLE
+        }
+        bRemoveShippingList.setOnClickListener {
 
+        }
+        bConfirmShoppingListChanges.setOnClickListener {
+            bConfirmShoppingListChanges.visibility = View.VISIBLE
+            bEditShoppingList.visibility = View.GONE
+        }
+        */
     }
 
     /**
@@ -65,7 +84,6 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
 
     private fun createShoppingList() {
         viewModel.createShoppingListFromUserViewM(globals.userId)
-
         getShoppingList()
     }
 
