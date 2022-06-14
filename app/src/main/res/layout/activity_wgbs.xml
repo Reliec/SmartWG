@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_background"
+    android:background="@drawable/app_background"
     tools:context=".SettingsActivity">
 
     <ScrollView
@@ -35,7 +35,7 @@
             android:id="@+id/tvWGBSActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/back"
+            android:background="@drawable/form_background"
             android:gravity="center"
             android:text="@string/Null"
             android:textSize="19dp"
