@@ -3,10 +3,7 @@ package com.example.android.smartwg
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.android.smartwg.model.Highscore
-import com.example.android.smartwg.model.ShoppingList
-import com.example.android.smartwg.model.ToiletStatus
-import com.example.android.smartwg.model.User
+import com.example.android.smartwg.model.*
 import com.example.android.smartwg.repository.Repository
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -22,11 +19,19 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     var toiletStatusResponse: MutableLiveData<Response<List<ToiletStatus>>> = MutableLiveData()
     var createShoppingListResponse: MutableLiveData<Response<List<ShoppingList>>> = MutableLiveData()
     var deleteShoppingListResponse: MutableLiveData<Response<List<ShoppingList>>> = MutableLiveData()
+    var wgbStringResponse: MutableLiveData<Response<List<WGB>>> = MutableLiveData()
 
     fun getUsersViewM(){
         viewModelScope.launch {
             val response = repository.getUsersRepo()
             userListResponse.value = response
+        }
+    }
+
+    fun getWGBSViewM(SACODE: Int?){
+        viewModelScope.launch {
+            val response = repository.getWGBSRepo(SACODE)
+            wgbStringResponse.value = response
         }
     }
 

@@ -1,9 +1,6 @@
 package com.example.android.smartwg.api
 
-import com.example.android.smartwg.model.Highscore
-import com.example.android.smartwg.model.ShoppingList
-import com.example.android.smartwg.model.ToiletStatus
-import com.example.android.smartwg.model.User
+import com.example.android.smartwg.model.*
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -11,6 +8,10 @@ interface APIService {
 
     @GET("/USERS")
     suspend fun getUsers(): Response<List<User>>
+
+    @FormUrlEncoded
+    @POST("/WGBS")
+    suspend fun getWGBS(@Field("SACODE")SACODE: Int?): Response<List<WGB>>
 
     @FormUrlEncoded
     @POST("/LOGINFO")
