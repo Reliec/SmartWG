@@ -62,7 +62,7 @@ class SettingsActivity : AppCompatActivity() {
      * @param newPASSWORD
      * @param newWGBs
      */
-    private fun updateSettings(newSACODE: Int?, newEMAIL: String?, newPASSWORD : String?, newWGBs:String?){
+    fun updateSettings(newSACODE: Int?, newEMAIL: String?, newPASSWORD : String?, newWGBs:String?){
         viewModel.updateSettingsViewM(globals.userSACode, newSACODE, globals.userEmail, newEMAIL, globals.userPassword, newPASSWORD)
         viewModel.echoStringResponse.observe(
             this,
