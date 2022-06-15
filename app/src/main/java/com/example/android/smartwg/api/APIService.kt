@@ -66,11 +66,11 @@ interface APIService {
     ): Response<List<ShoppingList>>
 
     @FormUrlEncoded
-    @POST("DELETESHOPPINGLISTFROMUSER")
+    @HTTP(method ="DELETE",path = "DELETESHOPPINGLISTFROMUSER", hasBody = true)
     suspend fun deleteShoppingListFromUser(
         @Field("AUTHORID") AUTHORID: Int?,
         @Field("SHOPPINGLISTID") SHOPPINGLISTID: Int?
-    ): Response<List<ShoppingList>>
+    ): Response<String>
 
     @FormUrlEncoded
     @PUT("UPDATESETTINGS")

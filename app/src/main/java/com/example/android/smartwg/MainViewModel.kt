@@ -24,7 +24,7 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     var shoppingListResponse: MutableLiveData<Response<List<ShoppingList>>> = MutableLiveData()
     var toiletStatusResponse: MutableLiveData<Response<List<ToiletStatus>>> = MutableLiveData()
     var createShoppingListResponse: MutableLiveData<Response<List<ShoppingList>>> = MutableLiveData()
-    var deleteShoppingListResponse: MutableLiveData<Response<List<ShoppingList>>> = MutableLiveData()
+    var deleteShoppingListResponse: MutableLiveData<Response<String>> = MutableLiveData()
     var wgbStringResponse: MutableLiveData<Response<List<WGB>>> = MutableLiveData()
 
     fun getUsersViewM(){
