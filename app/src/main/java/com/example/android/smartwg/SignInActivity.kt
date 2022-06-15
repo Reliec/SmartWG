@@ -50,6 +50,12 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Validates the values the user typed in to sign in. Returns a boolean if the values are
+     * in fact valid.
+     *
+     * @return
+     */
     fun loginValidate(): Boolean {
         var etEmail = findViewById<EditText>(R.id.etEmail);
         var etPassword = findViewById<EditText>(R.id.etPasswordLogin);
@@ -69,6 +75,15 @@ class SignInActivity : AppCompatActivity() {
         return loginValid
     }
 
+    /**
+     * Function that searches a unique email and password to see if the user exists. If so the user
+     * is logged in. (Another Activity starts)
+     * Global variables are also set here since there is a lot of information of the user that we
+     * can get here simultaneously. Globals will come into use for future features.
+     *
+     * @param etEmail
+     * @param etPassword
+     */
     fun dbLogin(etEmail: EditText, etPassword: EditText) {
         viewModel.getUserWherePasswordViewM(etEmail.text.toString(), etPassword.text.toString())
         viewModel.userWherePasswordResponse.observe(

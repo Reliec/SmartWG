@@ -4,6 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.smartwg.repository.Repository
 
+/**
+ * Factory Pattern to creaty ViewModels in order to send and get data from the backend.
+ *
+ * @property repository
+ */
 class MainViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return MainViewModel(repository) as T

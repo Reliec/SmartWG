@@ -12,14 +12,14 @@ import androidx.test.filters.LargeTest
 import android.app.Activity
 import android.content.ContextWrapper
 import androidx.test.espresso.Espresso
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.matcher.ViewMatchers
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import androidx.test.espresso.action.ViewActions.*
+import androidx.test.espresso.matcher.ViewMatchers.isRoot
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 
@@ -37,15 +37,6 @@ import org.junit.Rule
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class SignInActivityTest {
-    @get:Rule
-    var activityScenarioRule = activityScenarioRule<SignInActivity>()
-
-    @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.android.smartwg", appContext.packageName)
-    }
 
     @Test
     fun testSignIn() {
@@ -56,54 +47,9 @@ class SignInActivityTest {
 
             scenario.onActivity { activity ->
                 activity.loginValidate()
-                activity.dispatchKeyEvent(KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK))
             }
+            Espresso.onView(isRoot()).perform(pressBack())
         }
     }
 
-    @Test
-    fun testSignUp() {
-        launchActivity<SignUpActivity>().use { scenario ->
-            Espresso.onView(ViewMatchers.withId(R.id.etName)).perform(typeText("test12"))
-            Espresso.onView(ViewMatchers.withId(R.id.etFirstName)).perform(typeText("test12"))
-            Espresso.onView(ViewMatchers.withId(R.id.etEmail)).perform(typeText("test12"))
-            Espresso.onView(ViewMatchers.withId(R.id.etEmail2)).perform(typeText("test12"))
-            Espresso.onView(ViewMatchers.withId(R.id.etPasswordSignUp)).perform(typeText("test12"))
-            Espresso.onView(ViewMatchers.withId(R.id.etPassword2SignUp)).perform(typeText("test12"))
-
-            Espresso.closeSoftKeyboard()
-            Espresso.onView(ViewMatchers.withId(R.id.cboxTermsOfService)).perform(click())
-            Espresso.onView(ViewMatchers.withId(R.id.cboxPrivacyPolicy)).perform(click())
-
-            scenario.onActivity { activity ->
-                assertEquals(
-                    true, activity.validateRegister(
-                        activity.etName,
-                        activity.etFirstName,
-                        activity.etSACode,
-                        activity.etEmail,
-                        activity.etEmail2,
-                        activity.etPasswordSignUp,
-                        activity.etPassword2SignUp
-                    )
-                )
-
-                assertEquals(
-                    true,
-                    activity.validateCheckbox(
-                        activity.cboxPrivacyPolicy,
-                        activity.cboxTermsOfService
-                    )
-                )
-
-                activity.signUpdb(
-                    activity.etName,
-                    activity.etFirstName,
-                    activity.etSACode,
-                    activity.etEmail,
-                    activity.etPasswordSignUp
-                )
-            }
-        }
-    }
 }

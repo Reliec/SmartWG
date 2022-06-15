@@ -9,6 +9,12 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.util.*
 
+/**
+ * Class that contains Mutable live data that is send from the database and can be used in the appl
+ * ication. Its also the first layer to call the Endpoints from Repository.
+ *
+ * @property repository
+ */
 class MainViewModel(private val repository: Repository): ViewModel() {
 
     var userListResponse: MutableLiveData<Response<List<User>>> = MutableLiveData()

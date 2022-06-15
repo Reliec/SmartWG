@@ -85,6 +85,11 @@ class HomescreenActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Gets the current status of the isToulet value from database and stores it in globals.
+     *
+     * @param SACODE
+     */
     private fun setToiletStatus(SACODE: Int?) {
         viewModel.getToiletStatusViewM(SACODE)
         viewModel.toiletStatusResponse.observe(

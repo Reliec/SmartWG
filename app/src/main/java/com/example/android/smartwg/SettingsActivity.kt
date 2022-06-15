@@ -53,7 +53,16 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateSettings(newSACODE: Int?, newEMAIL: String?, newPASSWORD : String?, newWGBs:String?){
+    /**
+     * Sends new Information to the backend and changes the old values to the new ones. Two Endpoints
+     * are being called in one function because a MYSQL UPDATE statement cant alter 2 tables at once.
+     *
+     * @param newSACODE
+     * @param newEMAIL
+     * @param newPASSWORD
+     * @param newWGBs
+     */
+    fun updateSettings(newSACODE: Int?, newEMAIL: String?, newPASSWORD : String?, newWGBs:String?){
         viewModel.updateSettingsViewM(globals.userSACode, newSACODE, globals.userEmail, newEMAIL, globals.userPassword, newPASSWORD)
         viewModel.echoStringResponse.observe(
             this,
