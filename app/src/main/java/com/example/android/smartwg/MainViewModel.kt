@@ -84,9 +84,9 @@ class MainViewModel(private val repository: Repository): ViewModel() {
         }
     }
 
-    fun deleteShoppingListFromUserViewM(USERID: Int?) {
+    fun deleteShoppingListFromUserViewM(USERID: Int?, SHOPPINGLISTID: Int?) {
         viewModelScope.launch {
-            val response = repository.deleteShoppingListFromUserRepo(USERID)
+            val response = repository.deleteShoppingListFromUserRepo(USERID, SHOPPINGLISTID)
             deleteShoppingListResponse.value = response
         }
     }

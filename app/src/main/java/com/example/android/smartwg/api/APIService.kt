@@ -68,7 +68,8 @@ interface APIService {
     @FormUrlEncoded
     @POST("DELETESHOPPINGLISTFROMUSER")
     suspend fun deleteShoppingListFromUser(
-        @Field("AUTHORID") AUTHORID: Int?
+        @Field("AUTHORID") AUTHORID: Int?,
+        @Field("SHOPPINGLISTID") SHOPPINGLISTID: Int?
     ): Response<List<ShoppingList>>
 
     @FormUrlEncoded

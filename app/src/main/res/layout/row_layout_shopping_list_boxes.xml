@@ -7,9 +7,8 @@
     android:background="@drawable/app_background"
     android:visibility="visible">
 
-    <view
+    <androidx.cardview.widget.CardView
         android:id="@+id/ShoppingListView"
-        class="androidx.cardview.widget.CardView"
         android:layout_width="278dp"
         android:layout_height="95dp"
         android:layout_marginTop="16dp"
@@ -37,8 +36,9 @@
         app:layout_constraintBottom_toBottomOf="@+id/ShoppingListView"
         app:layout_constraintStart_toStartOf="@+id/ShoppingListView" />
 
-    <TextView
+    <EditText
         android:id="@+id/tvTitle"
+        android:inputType="none"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
@@ -50,7 +50,8 @@
         android:textColor="@color/black"
         android:translationZ="90dp"
         app:layout_constraintStart_toStartOf="@+id/ShoppingListView"
-        app:layout_constraintTop_toTopOf="@+id/ShoppingListView" />
+        app:layout_constraintTop_toTopOf="@+id/ShoppingListView"
+        tools:ignore="Autofill,LabelFor" />
 
     <TextView
         android:id="@+id/tvLastEdited"
@@ -67,27 +68,27 @@
         app:layout_constraintBottom_toBottomOf="@+id/ShoppingListView"
         app:layout_constraintEnd_toEndOf="@+id/ShoppingListView" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/vEditShoppingList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="18dp"
-        android:padding="3dp"
-        android:visibility="visible"
+        android:contentDescription="TODO"
         android:src="@drawable/ic_baseline_edit_24"
-        android:textColorLink="#AEEA00"
+        android:padding="3dp"
         android:translationZ="90dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/ShoppingListView"
-        app:layout_constraintTop_toTopOf="@+id/ShoppingListView"
-        android:contentDescription="TODO" />
+        app:layout_constraintTop_toTopOf="@+id/ShoppingListView" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/vConfirmShoppingListChanges"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="18dp"
+        android:contentDescription="TODO"
         android:padding="3dp"
         android:src="@drawable/ic_baseline_check_24"
         android:textColorHighlight="#00FFFFFF"
@@ -95,13 +96,13 @@
         android:translationZ="90dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/ShoppingListView"
-        app:layout_constraintTop_toTopOf="@+id/ShoppingListView"
-        android:contentDescription="TODO" />
+        app:layout_constraintTop_toTopOf="@+id/ShoppingListView" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/vRemoveShoppingList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="TODO"
         android:padding="3dp"
         android:rotation="45"
         android:src="@drawable/ic_baseline_remove_cross_24"
@@ -110,7 +111,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ShoppingListView"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="TODO" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

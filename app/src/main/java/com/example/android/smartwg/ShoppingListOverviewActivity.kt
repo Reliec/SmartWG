@@ -19,7 +19,7 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
 
     private val recAdapterShoppingListOverview by lazy{
-        RecycAdapterShoppingList()
+        RecycAdapterShoppingList(viewModel)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,26 +33,8 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
         setupRecyclerViewShoppingList()
         getShoppingList()
 
-        val bCreateShoppingList = findViewById<Button>(R.id.bCreateNewShoppingList)
-        val bEditShoppingList = findViewById<ImageButton>(R.id.vEditShoppingList)
-        val bRemoveShippingList = findViewById<ImageButton>(R.id.vRemoveShoppingList)
-        val bConfirmShoppingListChanges = findViewById<ImageButton>(R.id.vConfirmShoppingListChanges)
-        /**
-        bCreateShoppingList.setOnClickListener {
-            createShoppingList()
-        }
-        bEditShoppingList.setOnClickListener {
-            bEditShoppingList.visibility = View.GONE
-            bConfirmShoppingListChanges.visibility = View.VISIBLE
-        }
-        bRemoveShippingList.setOnClickListener {
 
-        }
-        bConfirmShoppingListChanges.setOnClickListener {
-            bConfirmShoppingListChanges.visibility = View.VISIBLE
-            bEditShoppingList.visibility = View.GONE
-        }
-        */
+        val bCreateShoppingList = findViewById<Button>(R.id.bCreateNewShoppingList)
     }
 
     /**
@@ -85,15 +67,6 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
     private fun createShoppingList() {
         viewModel.createShoppingListFromUserViewM(globals.userId)
         getShoppingList()
-    }
-
-    private fun deleteShoppingList() {
-        viewModel.deleteShoppingListFromUserViewM(globals.userId)
-    }
-
-    private fun editShoppingList() {
-        TODO("NOT YET IMPLEMENTED")
-        // viewModel.editShoppingListFromUserViewM(globals.userId, newTitle)
     }
 
 

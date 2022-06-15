@@ -56,8 +56,8 @@ class Repository {
         return RetrofitInstance.api.createShoppingListFromUser(USERID)
     }
 
-    suspend fun deleteShoppingListFromUserRepo(USERID: Int?): Response<List<ShoppingList>> {
-        return RetrofitInstance.api.deleteShoppingListFromUser(USERID)
+    suspend fun deleteShoppingListFromUserRepo(USERID: Int?, SHOPPINGLISTID: Int?): Response<List<ShoppingList>> {
+        return RetrofitInstance.api.deleteShoppingListFromUser(USERID, SHOPPINGLISTID)
     }
 
     suspend fun updateSettingsRepo(oldSACODE: Int?, newSACODE:Int?, oldEMAIL: String?, newEMAIL:String?, oldPASSWORD: String?, newPASSWORD:String?):Response<String>{
