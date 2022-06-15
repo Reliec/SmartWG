@@ -1,5 +1,6 @@
 package com.example.android.smartwg
 
+import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -49,16 +50,28 @@ class HighScoreListKitchenActivity : AppCompatActivity() {
             System.out.println(currentDateAndTime)
 
             insertNewHighscore(currentDateAndTime);
+            Thread.sleep(1000)
+            createHighscoreList(globals.userSACode, globals.userId)
         }
-
     }
 
+    /**
+     * Sets up Recycler View to set data that comes from backend.
+     *
+     */
     private fun setupRecyclerViewHighscore() {
         recyclerViewKitchen.adapter = recAdapterKitchen
         recyclerViewKitchen.layoutManager = LinearLayoutManager(this)
         recyclerViewKitchen.setNestedScrollingEnabled(false)
     }
 
+    /**
+     * Puts the data regarding highscores of users that cleand the kitchen into the RecyclerView.
+     * Function gets the data from backend.
+     *
+     * @param SACODE
+     * @param USERID
+     */
     @RequiresApi(Build.VERSION_CODES.N)
     private fun createHighscoreList(SACODE: Int?, USERID: Int?) {
         viewModel.getHighscoresOfWGRepoViewM(SACODE, "Kitchen", USERID)
@@ -82,6 +95,7 @@ class HighScoreListKitchenActivity : AppCompatActivity() {
                     System.out.println(hashMap)
 
                     var layout = findViewById<RelativeLayout>(R.id.emptyLinearHighscoreKitchen);
+                    layout.removeAllViews()
                     var prevTextViewId = 0
                     for (item in highscoreListResponse.body()!!) {
                         if(hashMap.contains(item.FIRST_NAME)) {
@@ -92,6 +106,7 @@ class HighScoreListKitchenActivity : AppCompatActivity() {
                                 ViewGroup.LayoutParams.WRAP_CONTENT,
                                 ViewGroup.LayoutParams.WRAP_CONTENT
                             )
+                            textView.setTextColor(Color.parseColor("#ffffff"))
                             textView.setText(item.FIRST_NAME + ": " + hashMap.get(item.FIRST_NAME))
                             var curTextViewId = prevTextViewId + 1
                             textView.id = curTextViewId
@@ -120,6 +135,12 @@ class HighScoreListKitchenActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Creates a new Highscore and puts it into the database. The parmeter that corresponds to the
+     * current time of the system.
+     *
+     * @param Date
+     */
     private fun insertNewHighscore(Date: String) {
         viewModel.createNewHighscoreViewM(
             globals.userId,

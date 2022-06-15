@@ -61,9 +61,18 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     /**
-     * Test function
+     * Function that checks if the values that the user typed in are empty or mismatch. A bool is
+     * returned according to the status. It can also be narrowed down which editText was typed in
+     * wrongly because the function exits at that point.
      *
-     * @param etName test
+     * @param etName
+     * @param etFirstName
+     * @param etSACode
+     * @param etEmail
+     * @param etEmail2
+     * @param etPassword
+     * @param etPassword2
+     * @return
      */
     fun validateRegister(etName: EditText, etFirstName: EditText, etSACode: EditText, etEmail: EditText, etEmail2:EditText, etPassword: EditText, etPassword2:EditText): Boolean{
 
@@ -108,6 +117,13 @@ class SignUpActivity : AppCompatActivity() {
         return true
     }
 
+    /**
+     * Checks if the checkboxes were checked by the user. Returns true if both were set.
+     *
+     * @param cboxPrivacyPolicy
+     * @param cboxTermsOfService
+     * @return
+     */
     fun validateCheckbox(cboxPrivacyPolicy: CheckBox, cboxTermsOfService: CheckBox): Boolean{
 
         if(cboxPrivacyPolicy.isChecked() == true && cboxTermsOfService.isChecked() == true){
@@ -116,6 +132,16 @@ class SignUpActivity : AppCompatActivity() {
         return false
     }
 
+    /**
+     * Function that takes the information the user typed into the editTexts and sends the data
+     * to the backend to create a new user on the database. Switches active Activity to SingIn.
+     *
+     * @param etName
+     * @param etFirstName
+     * @param etSACode
+     * @param etEmail
+     * @param etPassword
+     */
     fun signUpdb(etName : EditText, etFirstName: EditText, etSACode: EditText, etEmail:EditText, etPassword: EditText){
         if(etSACode.text.length == 0){
             etSACode.setText("3")
@@ -134,5 +160,4 @@ class SignUpActivity : AppCompatActivity() {
         val intent = Intent(this,SignInActivity::class.java)
         startActivity(intent)
     }
-
 }

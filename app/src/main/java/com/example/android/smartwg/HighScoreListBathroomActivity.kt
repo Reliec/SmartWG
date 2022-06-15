@@ -1,5 +1,6 @@
 package com.example.android.smartwg
 
+import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,6 +18,7 @@ import com.example.android.smartwg.repository.Repository
 import com.example.myapplication.util.globals
 import kotlinx.android.synthetic.main.activity_high_score_list_bathroom.*
 import kotlinx.android.synthetic.main.activity_high_score_list_kitchen.*
+import org.w3c.dom.Text
 import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
@@ -49,16 +51,29 @@ class HighScoreListBathroomActivity : AppCompatActivity() {
             System.out.println(currentDateAndTime)
 
             insertNewHighscore(currentDateAndTime);
+            Thread.sleep(1000)
+            createHighscoreList(globals.userSACode, globals.userId, recAdapterBathroom)
         }
-
     }
 
+    /**
+     * Sets up Recycler View to set data that comes from backend.
+     *
+     */
     private fun setupRecyclerViewHighscore(){
         recyclerViewBathroom.adapter = recAdapterBathroom
         recyclerViewBathroom.layoutManager = LinearLayoutManager(this)
         recyclerViewBathroom.setNestedScrollingEnabled(false)
     }
 
+    /**
+     * Puts the data regarding highscores of users that cleand the bathroom into the RecyclerView.
+     * Function gets the data from backend.
+     *
+     * @param SACODE
+     * @param USERID
+     * @param recAdapter
+     */
     @RequiresApi(Build.VERSION_CODES.N)
     fun createHighscoreList(SACODE: Int?, USERID: Int?, recAdapter: RecycAdapterHighscore){
         viewModel.getHighscoresOfWGRepoViewM(SACODE, "Bathroom",USERID)
@@ -81,16 +96,16 @@ class HighScoreListBathroomActivity : AppCompatActivity() {
                     System.out.println(hashMap)
 
                     var layout = findViewById<RelativeLayout>(R.id.emptyLinearHighscoreBathroom);
+                    layout.removeAllViews()
                     var prevTextViewId = 0
                     for (item in highscoreListResponse.body()!!) {
                         if(hashMap.contains(item.FIRST_NAME)) {
-
-
                             val textView = TextView(this)
                             textView.layoutParams = LinearLayout.LayoutParams(
                                 ViewGroup.LayoutParams.WRAP_CONTENT,
                                 ViewGroup.LayoutParams.WRAP_CONTENT
                             )
+                            textView.setTextColor(Color.parseColor("#ffffff"))
                             textView.setText(item.FIRST_NAME + ": " + hashMap.get(item.FIRST_NAME))
                             var curTextViewId = prevTextViewId + 1
                             textView.id = curTextViewId
@@ -121,6 +136,12 @@ class HighScoreListBathroomActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Creates a new Highscore and puts it into the database. The parmeter that corresponds to the
+     * current time of the system.
+     *
+     * @param Date
+     */
     private fun insertNewHighscore(Date: String) {
         viewModel.createNewHighscoreViewM(
             globals.userId,
