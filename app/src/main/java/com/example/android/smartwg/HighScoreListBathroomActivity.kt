@@ -84,7 +84,7 @@ class HighScoreListBathroomActivity : AppCompatActivity() {
                     highscoreListResponse.body().let {
                         if (it != null) {
                             recAdapter.setData(it)
-                            Log.d("TEST : ", it[0].toString())
+                            //Log.d("TEST : ", it[0].toString())
                         }
                     }
 
@@ -110,6 +110,7 @@ class HighScoreListBathroomActivity : AppCompatActivity() {
                             var curTextViewId = prevTextViewId + 1
                             textView.id = curTextViewId
                             textView.textSize = 20.0f
+
 
                             var params = RelativeLayout.LayoutParams(
                                 RelativeLayout.LayoutParams.WRAP_CONTENT,

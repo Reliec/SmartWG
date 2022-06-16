@@ -8,14 +8,20 @@
         <entry key="..\:/AndroidStudioProjects/app/src/main/res/drawable/back_big_stroke.xml" value="0.1735" />
         <entry key="..\:/AndroidStudioProjects/app/src/main/res/drawable/button_background.xml" value="0.1735" />
         <entry key="..\:/AndroidStudioProjects/app/src/main/res/drawable/button_background_rectangle.xml" value="0.1735" />
+        <entry key="..\:/AndroidStudioProjects/app/src/main/res/drawable/form_background.xml" value="0.1265" />
         <entry key="..\:/AndroidStudioProjects/app/src/main/res/drawable/homescreen_elemnts_style.xml" value="0.1735" />
+        <entry key="..\:/AndroidStudioProjects/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.1265" />
+        <entry key="..\:/AndroidStudioProjects/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.1265" />
+        <entry key="..\:/AndroidStudioProjects/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1265" />
+        <entry key="..\:/AndroidStudioProjects/app/src/main/res/drawable/ic_baseline_remove_cross_24.xml" value="0.1265" />
         <entry key="..\:/AndroidStudioProjects/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1735" />
+        <entry key="..\:/AndroidStudioProjects/app/src/main/res/drawable/input_backround.xml" value="0.1265" />
         <entry key="..\:/AndroidStudioProjects/app/src/main/res/drawable/login_background.xml" value="0.1735" />
         <entry key="..\:/AndroidStudioProjects/app/src/main/res/drawable/login_edit_background.xml" value="0.1735" />
         <entry key="..\:/AndroidStudioProjects/app/src/main/res/drawable/toilet_free_background.xml" value="0.1735" />
         <entry key="..\:/AndroidStudioProjects/app/src/main/res/drawable/toilet_occupied_background.xml" value="0.1735" />
         <entry key="..\:/AndroidStudioProjects/app/src/main/res/layout/activity_high_score_list.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProjects/app/src/main/res/layout/activity_high_score_list_bathroom.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/app/src/main/res/layout/activity_high_score_list_bathroom.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/app/src/main/res/layout/activity_high_score_list_kitchen.xml" value="0.13269927536231885" />
         <entry key="..\:/AndroidStudioProjects/app/src/main/res/layout/activity_homescreen.xml" value="0.13269927536231885" />
         <entry key="..\:/AndroidStudioProjects/app/src/main/res/layout/activity_main.xml" value="0.33053221288515405" />
