@@ -89,39 +89,48 @@ class SignInActivity : AppCompatActivity() {
         viewModel.userWherePasswordResponse.observe(
             this,
             Observer { response ->
-                for (i in response?.body()!!) {
-                    System.out.println(response?.body()?.get(0)?.EMAIL)
-                    System.out.println(response?.body()?.get(0)?.PASSWORD)
+                if(response.body()?.size  != 0) {
+                    for (i in response?.body()!!) {
+                        System.out.println(response?.body()?.get(0)?.EMAIL)
+                        System.out.println(response?.body()?.get(0)?.PASSWORD)
 
-                    if (response?.body()?.get(0)?.EMAIL.toString() == etEmail.text.toString() &&
-                        response?.body()
-                            ?.get(0)?.PASSWORD.toString() == etPassword.text.toString()
-                    ) {
-                        globals.userEmail = response?.body()?.get(0)?.EMAIL
-                        globals.userPassword = response?.body()?.get(0)?.PASSWORD
-                        globals.userId = response?.body()?.get(0)?.ID
-                        globals.userFirstName = response?.body()?.get(0)?.FIRST_NAME
-                        globals.userLastName = response?.body()?.get(0)?.NAME
-                        globals.userSACode = response?.body()?.get(0)?.SACODE
-                        globals.userWGBs = response?.body()?.get(0)?.WGGBS
-                        globals.userWGName = response?.body()?.get(0)?.WGNAME
+                        if (response?.body()?.get(0)?.EMAIL.toString() == etEmail.text.toString() &&
+                            response?.body()
+                                ?.get(0)?.PASSWORD.toString() == etPassword.text.toString()
+                        ) {
+                            globals.userEmail = response?.body()?.get(0)?.EMAIL
+                            globals.userPassword = response?.body()?.get(0)?.PASSWORD
+                            globals.userId = response?.body()?.get(0)?.ID
+                            globals.userFirstName = response?.body()?.get(0)?.FIRST_NAME
+                            globals.userLastName = response?.body()?.get(0)?.NAME
+                            globals.userSACode = response?.body()?.get(0)?.SACODE
+                            globals.userWGBs = response?.body()?.get(0)?.WGGBS
+                            globals.userWGName = response?.body()?.get(0)?.WGNAME
 
-                        System.out.println(response?.body())
+                            System.out.println(response?.body())
 
-                        Toast.makeText(
-                            this@SignInActivity,
-                            "Login successful !",
-                            Toast.LENGTH_LONG
-                        ).show()
-                        val intent = Intent(this@SignInActivity, HomescreenActivity::class.java)
-                        startActivity(intent)
-                    } else {
-                        Toast.makeText(
-                            this@SignInActivity,
-                            "Username does not exist or password is wrong",
-                            Toast.LENGTH_LONG
-                        ).show()
+                            Toast.makeText(
+                                this@SignInActivity,
+                                "Login successful !",
+                                Toast.LENGTH_LONG
+                            ).show()
+                            val intent = Intent(this@SignInActivity, HomescreenActivity::class.java)
+                            startActivity(intent)
+                        } else {
+                            Toast.makeText(
+                                this@SignInActivity,
+                                "Username does not exist or password is wrong",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
                     }
+                }
+                else {
+                    Toast.makeText(
+                        this@SignInActivity,
+                        "Username does not exist or password is wrong",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             })
     }
