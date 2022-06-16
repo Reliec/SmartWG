@@ -1,5 +1,6 @@
 package com.example.android.smartwg
 
+import android.text.Editable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,7 +8,6 @@ import com.example.android.smartwg.model.*
 import com.example.android.smartwg.repository.Repository
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import java.util.*
 
 /**
  * Class that contains Mutable live data that is send from the database and can be used in the appl
@@ -17,14 +17,13 @@ import java.util.*
  */
 class MainViewModel(private val repository: Repository): ViewModel() {
 
+    var echoStringResponse: MutableLiveData<Response<String>> = MutableLiveData()
+
     var userListResponse: MutableLiveData<Response<List<User>>> = MutableLiveData()
     var userWherePasswordResponse: MutableLiveData<Response<List<User>>> = MutableLiveData();
-    var echoStringResponse: MutableLiveData<Response<String>> = MutableLiveData()
     var highscoreResponse: MutableLiveData<Response<List<Highscore>>> = MutableLiveData()
     var shoppingListResponse: MutableLiveData<Response<List<ShoppingList>>> = MutableLiveData()
     var toiletStatusResponse: MutableLiveData<Response<List<ToiletStatus>>> = MutableLiveData()
-    var createShoppingListResponse: MutableLiveData<Response<List<ShoppingList>>> = MutableLiveData()
-    var deleteShoppingListResponse: MutableLiveData<Response<String>> = MutableLiveData()
     var wgbStringResponse: MutableLiveData<Response<List<WGB>>> = MutableLiveData()
 
     fun getUsersViewM(){
@@ -86,14 +85,14 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     fun createShoppingListFromUserViewM(USERID: Int?) {
         viewModelScope.launch {
             val response = repository.createShoppingListFromUserRepo(USERID)
-            createShoppingListResponse.value = response
+            echoStringResponse.value = response
         }
     }
 
     fun deleteShoppingListFromUserViewM(USERID: Int?, SHOPPINGLISTID: Int?) {
         viewModelScope.launch {
             val response = repository.deleteShoppingListFromUserRepo(USERID, SHOPPINGLISTID)
-            deleteShoppingListResponse.value = response
+            echoStringResponse.value = response
         }
     }
 
@@ -107,6 +106,13 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     fun updateWGBSViewM(oldWGBs:String?, newWGBs:String?, SACODE: Int?){
         viewModelScope.launch {
             val response = repository.updateWGBSRepo(oldWGBs, newWGBs, SACODE)
+            echoStringResponse.value = response
+        }
+    }
+
+    fun updateShoppingListViewM(userID: Int?, shoppingListID: Int, tvTitle: Editable) {
+        viewModelScope.launch {
+            val response = repository.updateShoppingListRepo(userID, shoppingListID, tvTitle)
             echoStringResponse.value = response
         }
     }

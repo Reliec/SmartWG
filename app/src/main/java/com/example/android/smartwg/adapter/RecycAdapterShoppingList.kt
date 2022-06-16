@@ -5,18 +5,22 @@ import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.smartwg.MainViewModel
 import com.example.android.smartwg.MainViewModelFactory
 import com.example.android.smartwg.R
+import com.example.android.smartwg.ShoppingListOverviewActivity
 import com.example.android.smartwg.model.ShoppingList
 import com.example.android.smartwg.repository.Repository
 import com.example.myapplication.util.globals
 import kotlinx.android.synthetic.main.row_layout_shopping_list_boxes.view.*
 
-class RecycAdapterShoppingList(viewModelIn: MainViewModel) : RecyclerView.Adapter<RecycAdapterShoppingList.MyViewHolder>(){
-    var viewModel = viewModelIn
+class RecycAdapterShoppingList(
+    viewModelIn: MainViewModel,
+    parentActivityIn: ShoppingListOverviewActivity
+) : RecyclerView.Adapter<RecycAdapterShoppingList.MyViewHolder>(){
+    private var viewModel = viewModelIn
+    private var parentActivity = parentActivityIn
     private var shoppingListList:List<ShoppingList> = emptyList<ShoppingList>();
 
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
@@ -58,11 +62,13 @@ class RecycAdapterShoppingList(viewModelIn: MainViewModel) : RecyclerView.Adapte
             bRemove.visibility = View.INVISIBLE
             tTitle.inputType = InputType.TYPE_NULL
             tTitle.typeface = Typeface.SANS_SERIF
+            viewModel.updateShoppingListViewM(globals.userId, shoppingListID, holder.itemView.tvTitle.text)
         }
 
         bRemove.setOnClickListener {
             viewModel.deleteShoppingListFromUserViewM(globals.userId, shoppingListID)
             notifyItemRemoved(position)
+            parentActivity.recreate()
         }
 
     }

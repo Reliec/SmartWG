@@ -1,11 +1,7 @@
 package com.example.android.smartwg
 
-import android.media.Image
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -19,7 +15,7 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
 
     private val recAdapterShoppingListOverview by lazy{
-        RecycAdapterShoppingList(viewModel)
+        RecycAdapterShoppingList(viewModel, this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,12 +31,18 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
 
 
         val bCreateShoppingList = findViewById<Button>(R.id.bCreateNewShoppingList)
+
+        bCreateShoppingList.setOnClickListener {
+            viewModel.createShoppingListFromUserViewM(globals.userId)
+            getShoppingList()
+            recreate()
+        }
     }
 
     /**
      * @
      */
-    private fun getShoppingList() {
+    fun getShoppingList() {
         viewModel.getShoppingListsFromUserViewM(globals.userId)
         viewModel.shoppingListResponse.observe(this
         ) { shoppingListResponse ->
@@ -64,10 +66,6 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
 
     }
 
-    private fun createShoppingList() {
-        viewModel.createShoppingListFromUserViewM(globals.userId)
-        getShoppingList()
-    }
 
 
     private fun setupRecyclerViewShoppingList() {

@@ -1,5 +1,7 @@
 package com.example.android.smartwg.api
 
+import android.text.Editable
+import android.widget.EditText
 import com.example.android.smartwg.model.*
 import retrofit2.Response
 import retrofit2.http.*
@@ -63,7 +65,15 @@ interface APIService {
     @POST("CREATESHOPPINGLISTFROMUSER")
     suspend fun createShoppingListFromUser(
         @Field("AUTHORID") AUTHORID: Int?
-    ): Response<List<ShoppingList>>
+    ): Response<String>
+
+    @FormUrlEncoded
+    @PUT("UPDATESHOPPINGLISTFROMUSER")
+    suspend fun updateShoppingListFromUser(
+        @Field("AUTHORID") authorID: Int?,
+        @Field("SHOPPINGLISTID") shoppingListID: Int,
+        @Field("newTITLE") tvTitle: Editable
+    ): Response<String>
 
     @FormUrlEncoded
     @HTTP(method ="DELETE",path = "DELETESHOPPINGLISTFROMUSER", hasBody = true)
