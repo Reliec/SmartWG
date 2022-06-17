@@ -28,5 +28,6 @@
     <string name="confirmChanges">Confirm Changes</string>
     <string name="nameOfUser">nameOfUser</string>
     <string name="Amount">Amount</string>
+    <string name="Unit">Unit</string>
     <string name="shoppingListTitle">ShoppingListTitle</string>
 </resources>

@@ -4,6 +4,7 @@ import android.text.Editable
 import com.example.android.smartwg.api.RetrofitInstance
 import com.example.android.smartwg.model.*
 import retrofit2.Response
+import retrofit2.Retrofit
 
 class Repository {
     suspend fun getUsersRepo(): Response<List<User>> {
@@ -71,5 +72,17 @@ class Repository {
 
     suspend fun updateShoppingListRepo(userID: Int?, shoppingListID: Int, tvTitle: Editable): Response<String>? {
         return RetrofitInstance.api.updateShoppingListFromUser(userID,shoppingListID, tvTitle)
+    }
+
+    suspend fun getShoppingListItemsRepo(shoppingListID: Int): Response<List<ShoppingListItem>> {
+        return RetrofitInstance.api.getShoppingListItems(shoppingListID)
+    }
+
+    suspend fun createShoppingListItemRepo(shoppingListID: Int): Response<String>? {
+        return RetrofitInstance.api.createShoppingListItem(shoppingListID)
+    }
+
+    suspend fun deleteShoppingListItemRepo(shoppingListItemID: Int): Response<String>? {
+        return RetrofitInstance.api.deleteShoppingListItem(shoppingListItemID)
     }
 }

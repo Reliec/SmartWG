@@ -17,14 +17,17 @@ import retrofit2.Response
  */
 class MainViewModel(private val repository: Repository): ViewModel() {
 
+
     var echoStringResponse: MutableLiveData<Response<String>> = MutableLiveData()
 
     var userListResponse: MutableLiveData<Response<List<User>>> = MutableLiveData()
     var userWherePasswordResponse: MutableLiveData<Response<List<User>>> = MutableLiveData();
     var highscoreResponse: MutableLiveData<Response<List<Highscore>>> = MutableLiveData()
     var shoppingListResponse: MutableLiveData<Response<List<ShoppingList>>> = MutableLiveData()
+    val shoppingListItemsResponse: MutableLiveData<Response<List<ShoppingListItem>>> = MutableLiveData()
     var toiletStatusResponse: MutableLiveData<Response<List<ToiletStatus>>> = MutableLiveData()
     var wgbStringResponse: MutableLiveData<Response<List<WGB>>> = MutableLiveData()
+
 
     fun getUsersViewM(){
         viewModelScope.launch {
@@ -113,6 +116,27 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     fun updateShoppingListViewM(userID: Int?, shoppingListID: Int, tvTitle: Editable) {
         viewModelScope.launch {
             val response = repository.updateShoppingListRepo(userID, shoppingListID, tvTitle)
+            echoStringResponse.value = response
+        }
+    }
+
+    fun getShoppingListItemsViewM(shoppingListID: Int) {
+        viewModelScope.launch {
+            val response = repository.getShoppingListItemsRepo(shoppingListID)
+            shoppingListItemsResponse.value = response
+        }
+    }
+
+    fun createShoppingListItem(shoppingListID: Int) {
+        viewModelScope.launch {
+            val response = repository.createShoppingListItemRepo(shoppingListID)
+            echoStringResponse.value = response
+        }
+    }
+
+    fun deleteShoppingListItem(shoppingListItemID: Int) {
+        viewModelScope.launch {
+            val response = repository.deleteShoppingListItemRepo(shoppingListItemID)
             echoStringResponse.value = response
         }
     }

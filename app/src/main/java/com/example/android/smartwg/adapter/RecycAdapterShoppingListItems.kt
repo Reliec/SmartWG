@@ -9,12 +9,11 @@ import com.example.android.smartwg.R
 import com.example.android.smartwg.ShoppingListInstanceActivity
 import com.example.android.smartwg.model.ShoppingListItem
 import kotlinx.android.synthetic.main.row_layout_shopping_list_items.view.*
-import okhttp3.internal.notify
 
 class RecycAdapterShoppingListItems(
-    viewModel: MainViewModel,
-    shoppingListInstanceActivity: ShoppingListInstanceActivity
-) : RecyclerView.Adapter<RecycAdapterShoppingListItems.MyViewHolder>() {
+    val viewModel: MainViewModel,
+    val shoppingListInstanceActivity: ShoppingListInstanceActivity,
+) : RecyclerView.Adapter<RecycAdapterShoppingListItems.MyViewHolder>(){
     private var shoppingListItemList:List<ShoppingListItem> = emptyList<ShoppingListItem>()
 
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
@@ -30,7 +29,13 @@ class RecycAdapterShoppingListItems(
         holder: RecycAdapterShoppingListItems.MyViewHolder,
         position: Int
     ) {
+        var itemAmount = shoppingListItemList[position].amount
+        var itemTitle = shoppingListItemList[position].title
+        var itemUnit = shoppingListItemList[position].unit
 
+        holder.itemView.tvItemTitle.text = itemTitle
+        holder.itemView.tvItemAmount.text = itemAmount.toString()
+        holder.itemView.tvItemUnit.text = itemUnit
 
     }
 
@@ -41,5 +46,14 @@ class RecycAdapterShoppingListItems(
     fun setData(shoppingListItemListIn: List<ShoppingListItem>) {
         shoppingListItemList = shoppingListItemListIn
         notifyDataSetChanged()
+    }
+
+    fun removeItem(position: Int) {
+        viewModel.deleteShoppingListItem(shoppingListItemList[position].ID)
+        notifyItemRemoved(position)
+    }
+
+    fun getData(): List<ShoppingListItem> {
+        return shoppingListItemList
     }
 }

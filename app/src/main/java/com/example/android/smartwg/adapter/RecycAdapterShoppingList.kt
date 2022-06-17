@@ -44,7 +44,8 @@ class RecycAdapterShoppingList(
 
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, ShoppingListInstanceActivity::class.java)
-            intent.putExtra("Shopping List Title", tTitle.text)
+            intent.putExtra("Shopping List Title", tTitle.text.toString())
+            intent.putExtra("Shopping List ID", shoppingListID)
             startActivity(holder.itemView.context,intent, null)
         }
 

@@ -98,4 +98,22 @@ interface APIService {
         @Field("SACode")SACode:Int?
     ):Response<String>
 
+    @FormUrlEncoded
+    @POST("GETSHOPPINGLISTITEMS")
+    suspend fun getShoppingListItems(
+        @Field("SHOPPINGLISTID")shoppingListID: Int
+    ): Response<List<ShoppingListItem>>
+
+    @FormUrlEncoded
+    @POST("CREATESHOPPINGLISTITEM")
+    suspend fun createShoppingListItem(
+        @Field("SHOPPINGLISTID")shoppingListID: Int
+    ): Response<String>
+
+    @FormUrlEncoded
+    @HTTP(method ="DELETE",path = "DELETESHOPPINGLISTITEM", hasBody = true)
+    suspend fun deleteShoppingListItem(
+        @Field("SHOPPINGLISTITEMID")shoppingListItemID: Int
+    ): Response<String>
+
 }

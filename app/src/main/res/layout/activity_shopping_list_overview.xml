@@ -25,8 +25,8 @@
 
     <ScrollView
         android:id="@+id/shoppingListContainer"
-        android:layout_width="516dp"
-        android:layout_height="661dp"
+        android:layout_width="414dp"
+        android:layout_height="571dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

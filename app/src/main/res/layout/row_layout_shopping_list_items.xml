@@ -9,19 +9,18 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/ShoppingListView"
-        android:layout_width="277dp"
-        android:layout_height="78dp"
+        android:id="@+id/ShoppingListItemView"
+        android:layout_width="364dp"
+        android:layout_height="50dp"
         android:background="#00FFFFFF"
         app:cardBackgroundColor="#49876D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvItemTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
@@ -33,20 +32,20 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:translationZ="90dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ShoppingListView"
-        app:layout_constraintEnd_toEndOf="@+id/ShoppingListView"
+        app:layout_constraintBottom_toBottomOf="@+id/ShoppingListItemView"
+        app:layout_constraintEnd_toEndOf="@+id/ShoppingListItemView"
         app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="@+id/ShoppingListView"
-        app:layout_constraintTop_toTopOf="@+id/ShoppingListView"
+        app:layout_constraintStart_toStartOf="@+id/ShoppingListItemView"
+        app:layout_constraintTop_toTopOf="@+id/ShoppingListItemView"
         tools:ignore="Autofill,LabelFor" />
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="47dp"
-        android:layout_height="78dp"
+        android:layout_height="50dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ShoppingListView"
+        app:layout_constraintEnd_toStartOf="@+id/ShoppingListItemView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -56,11 +55,24 @@
         android:text="@string/Amount"
         android:textSize="18sp"
         android:translationZ="90dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ShoppingListView"
-        app:layout_constraintEnd_toEndOf="@+id/ShoppingListView"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toStartOf="@+id/ShoppingListView"
-        app:layout_constraintTop_toTopOf="@+id/ShoppingListView" />
+        app:layout_constraintBottom_toBottomOf="@+id/ShoppingListItemView"
+        app:layout_constraintEnd_toEndOf="@+id/ShoppingListItemView"
+        app:layout_constraintHorizontal_bias="0.76"
+        app:layout_constraintStart_toStartOf="@+id/ShoppingListItemView"
+        app:layout_constraintTop_toTopOf="@+id/ShoppingListItemView" />
+
+    <TextView
+        android:id="@+id/tvItemUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Unit"
+        android:textSize="18sp"
+        android:translationZ="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toEndOf="@+id/tvItemAmount"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
