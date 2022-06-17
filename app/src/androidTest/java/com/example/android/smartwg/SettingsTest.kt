@@ -36,7 +36,8 @@ class SettingsTest {
                     activity.edSharedAppartmentCode.text.toString().toInt(),
                     activity.edUserEmail.text.toString(),
                     activity.edPassword.text.toString(),
-                    activity.edWGBS.text.toString()
+                    activity.edWGBS.text.toString(),
+                    activity.edWGTitle.text.toString()
                 )
             }
             Thread.sleep(400)

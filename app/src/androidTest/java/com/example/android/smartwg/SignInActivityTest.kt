@@ -48,6 +48,7 @@ class SignInActivityTest {
             scenario.onActivity { activity ->
                 activity.loginValidate()
             }
+            Thread.sleep(500)
             Espresso.onView(isRoot()).perform(pressBack())
         }
     }
