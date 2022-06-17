@@ -83,7 +83,7 @@ class HighScoreListKitchenActivity : AppCompatActivity() {
                     highscoreListResponse.body().let {
                         if (it != null) {
                             recAdapterKitchen.setData(it)
-                            Log.d("TEST : ", it[0].toString())
+                            //Log.d("TEST : ", it[0].toString())
                         }
                     }
 
