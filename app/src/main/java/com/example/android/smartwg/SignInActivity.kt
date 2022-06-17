@@ -14,6 +14,10 @@ import com.example.myapplication.util.globals
 import retrofit2.Response
 import java.net.SocketTimeoutException
 
+/**
+ * Existing Users can Sign in into their Account on this Activity. The Email and Password is required to do so.
+ *
+ */
 class SignInActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel

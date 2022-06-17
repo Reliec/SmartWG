@@ -6,6 +6,12 @@ import android.os.Bundle
 import android.widget.Button
 import kotlinx.android.synthetic.main.activity_homescreen.*
 
+/**
+ * Activity to choose the room that the user wants to clean or look up information about when it
+ * was cleaned. The Activity exists so the user does not have to type in the room name when creating
+ * a new Highscore entry.
+ *
+ */
 class HighScoreListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

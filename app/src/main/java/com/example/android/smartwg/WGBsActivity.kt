@@ -5,6 +5,10 @@ import android.os.Bundle
 import android.widget.TextView
 import com.example.myapplication.util.globals
 
+/**
+ * Simple activity that shows the overall rules of a sharedappartment.
+ *
+ */
 class WGBsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

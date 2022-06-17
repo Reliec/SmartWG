@@ -12,6 +12,10 @@ import com.example.android.smartwg.repository.Repository
 import com.example.myapplication.util.globals
 import org.w3c.dom.Text
 
+/**
+ * Users can modify their account data or data about the sharedappartment they are in in this Activity.
+ *
+ */
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
