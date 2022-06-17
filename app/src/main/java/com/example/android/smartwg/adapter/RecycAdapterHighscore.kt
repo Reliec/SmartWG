@@ -8,9 +8,15 @@ import com.example.android.smartwg.R
 import com.example.android.smartwg.model.Highscore
 import com.example.android.smartwg.model.User
 import kotlinx.android.synthetic.main.row_layout_highscore.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class RecycAdapterHighscore() : RecyclerView.Adapter<RecycAdapterHighscore.MyViewHolder>(){
     private var myList:List<Highscore> = emptyList<Highscore>();
+
+    val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.GERMAN)
+    val currentDateAndTime: String =
+        simpleDateFormat.format(Date())
 
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
@@ -26,10 +32,13 @@ class RecycAdapterHighscore() : RecyclerView.Adapter<RecycAdapterHighscore.MyVie
         holder.itemView.tvName.text = myList?.get(position)?.NAME
         holder.itemView.tvFirstName.text = myList?.get(position)?.FIRST_NAME
         holder.itemView.tvDate.text = myList?.get(position)?.DATE
+
     }
 
     fun setData(newList : List<Highscore>){
+
         myList = newList
+        myList = myList.sortedByDescending { it.DATE }
         notifyDataSetChanged()
     }
 }

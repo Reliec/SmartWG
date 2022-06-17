@@ -94,6 +94,7 @@ interface APIService {
     @PUT("UPDATEWGBS")
     suspend fun updateWGBS(
         @Field("oldWGBs")oldWGBs:String?, @Field("newWGBs")newWGBs:String?,
+        @Field("oldTitle")oldTitle:String?, @Field("newTitle")newTitle:String?,
         @Field("SACode")SACode:Int?
     ):Response<String>
 

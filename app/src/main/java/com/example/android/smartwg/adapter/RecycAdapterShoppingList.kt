@@ -1,15 +1,14 @@
 package com.example.android.smartwg.adapter
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.android.smartwg.MainViewModel
-import com.example.android.smartwg.MainViewModelFactory
-import com.example.android.smartwg.R
-import com.example.android.smartwg.ShoppingListOverviewActivity
+import com.example.android.smartwg.*
 import com.example.android.smartwg.model.ShoppingList
 import com.example.android.smartwg.repository.Repository
 import com.example.myapplication.util.globals
@@ -43,6 +42,11 @@ class RecycAdapterShoppingList(
         holder.itemView.tvAuthor.text = shoppingListList[position].FIRST_NAME
         holder.itemView.tvLastEdited.text = shoppingListList[position].LAST_EDITED
 
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, ShoppingListInstanceActivity::class.java)
+            intent.putExtra("Shopping List Title", tTitle.text)
+            startActivity(holder.itemView.context,intent, null)
+        }
 
         bEdit.setOnClickListener {
             bEdit.visibility = View.INVISIBLE

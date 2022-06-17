@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.smartwg.repository.Repository
 import com.example.myapplication.util.globals
+import org.w3c.dom.Text
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -37,9 +38,12 @@ class SettingsActivity : AppCompatActivity() {
         val tvWGBs = findViewById<TextView>(R.id.edWGBS)
         tvWGBs.text = globals.userWGBs
 
+        val tvWGName = findViewById<TextView>(R.id.edWGTitle)
+        tvWGName.text = globals.userWGName
+
         tvWGBs.setOnEditorActionListener{v, actionId, event ->
             if(actionId == EditorInfo.IME_ACTION_DONE){
-                updateSettings(tvSharedAppartmentCode.text.toString().toInt(), tvEmail.text.toString(), tvPassword.text.toString(), tvWGBs.text.toString())
+                updateSettings(tvSharedAppartmentCode.text.toString().toInt(), tvEmail.text.toString(), tvPassword.text.toString(), tvWGBs.text.toString(),tvWGName.text.toString())
                 true
             }
             else
@@ -49,7 +53,7 @@ class SettingsActivity : AppCompatActivity() {
         val bConfirmChanges = findViewById<Button>(R.id.bConfirmChanges)
 
         bConfirmChanges.setOnClickListener {
-            updateSettings(tvSharedAppartmentCode.text.toString().toInt(), tvEmail.text.toString(), tvPassword.text.toString(), tvWGBs.text.toString())
+            updateSettings(tvSharedAppartmentCode.text.toString().toInt(), tvEmail.text.toString(), tvPassword.text.toString(), tvWGBs.text.toString(),tvWGName.text.toString())
         }
     }
 
@@ -62,7 +66,7 @@ class SettingsActivity : AppCompatActivity() {
      * @param newPASSWORD
      * @param newWGBs
      */
-    fun updateSettings(newSACODE: Int?, newEMAIL: String?, newPASSWORD : String?, newWGBs:String?){
+    fun updateSettings(newSACODE: Int?, newEMAIL: String?, newPASSWORD : String?, newWGBs:String?, newTitle:String?){
         viewModel.updateSettingsViewM(globals.userSACode, newSACODE, globals.userEmail, newEMAIL, globals.userPassword, newPASSWORD)
         viewModel.echoStringResponse.observe(
             this,
@@ -83,7 +87,7 @@ class SettingsActivity : AppCompatActivity() {
             }
         )
         Thread.sleep(1000)
-        viewModel.updateWGBSViewM(globals.userWGBs, newWGBs, globals.userSACode)
+        viewModel.updateWGBSViewM(globals.userWGBs, newWGBs, globals.userWGName,newTitle,globals.userSACode)
         viewModel.echoStringResponse.observe(
             this, Observer {
                 response ->
@@ -91,6 +95,7 @@ class SettingsActivity : AppCompatActivity() {
                     var resp: String = response.body().toString()
                     Toast.makeText(this, resp, Toast.LENGTH_LONG).show()
                     globals.userWGBs = newWGBs
+                    globals.userWGName = newTitle
                 }
                 else{
                     Toast.makeText(this, response.code().toString() + "Update WGBS failed", Toast.LENGTH_LONG).show()
@@ -103,6 +108,7 @@ class SettingsActivity : AppCompatActivity() {
         viewModel.getWGBSViewM(SACODE)
         viewModel.wgbStringResponse.observe(this, Observer{ response ->
             globals.userWGBs = response.body()?.get(0)?.WGGBS
+            globals.userWGName = response.body()?.get(0)?.WGNAME
         })
     }
 }

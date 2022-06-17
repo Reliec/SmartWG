@@ -13,15 +13,14 @@
         android:layout_width="52dp"
         android:layout_height="36dp"
         android:layout_gravity="center"
-        android:layout_marginTop="78dp"
         android:background="@drawable/app_background"
         android:src="@drawable/ic_baseline_shopping_basket_24"
         android:textAlignment="center"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/recyclerViewShoppingListItems"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.73"
-        app:layout_constraintStart_toStartOf="@+id/ShoppingListTitle"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintStart_toEndOf="@+id/tvShoppingListTitle" />
 
     <Button
         android:id="@+id/bCreateNewShoppingListItem"
@@ -43,49 +42,44 @@
         app:layout_constraintVertical_bias="0.9" />
 
     <TextView
-        android:id="@+id/ShoppingListTitle"
-        android:layout_width="210dp"
-        android:layout_height="45dp"
+        android:id="@+id/tvShoppingListTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/shoppingListTitle"
         android:textColor="#FAF7F7"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
-        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewShoppingListItems"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewShoppingListItems"
+        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerViewShoppingListItems"
         android:layout_width="324dp"
         android:layout_height="494dp"
         app:layout_constraintBottom_toTopOf="@+id/bCreateNewShoppingListItem"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shoppingCartIconInstance" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/vEditShoppingList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="78dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="15dp"
         android:contentDescription="TODO"
         android:padding="3dp"
         android:src="@drawable/ic_baseline_edit_24"
         android:translationZ="90dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewShoppingListItems"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewShoppingListItems"
+        app:layout_constraintStart_toEndOf="@+id/shoppingCartIconInstance" />
 
     <ImageView
         android:id="@+id/vConfirmShoppingListChanges"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
         android:contentDescription="TODO"
         android:padding="3dp"
         android:src="@drawable/ic_baseline_check_24"
@@ -93,8 +87,8 @@
         android:textColorLink="#00FFFFFF"
         android:translationZ="90dp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewShoppingListItems"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewShoppingListItems"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/recyclerViewShoppingListItems" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,6 +25,11 @@
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".ShoppingListInstanceActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
             android:name=".HighScoreListBathroomActivity"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />

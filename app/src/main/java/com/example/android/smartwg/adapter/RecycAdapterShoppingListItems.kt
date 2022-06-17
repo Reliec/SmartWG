@@ -4,12 +4,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android.smartwg.MainViewModel
 import com.example.android.smartwg.R
+import com.example.android.smartwg.ShoppingListInstanceActivity
 import com.example.android.smartwg.model.ShoppingListItem
 import kotlinx.android.synthetic.main.row_layout_shopping_list_items.view.*
 import okhttp3.internal.notify
 
-class RecycAdapterShoppingListItems() : RecyclerView.Adapter<RecycAdapterShoppingListItems.MyViewHolder>() {
+class RecycAdapterShoppingListItems(
+    viewModel: MainViewModel,
+    shoppingListInstanceActivity: ShoppingListInstanceActivity
+) : RecyclerView.Adapter<RecycAdapterShoppingListItems.MyViewHolder>() {
     private var shoppingListItemList:List<ShoppingListItem> = emptyList<ShoppingListItem>()
 
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
@@ -25,8 +30,7 @@ class RecycAdapterShoppingListItems() : RecyclerView.Adapter<RecycAdapterShoppin
         holder: RecycAdapterShoppingListItems.MyViewHolder,
         position: Int
     ) {
-        val title = holder.itemView.tvTitle
-        val count = holder.itemView.tvItemCount
+
 
     }
 
