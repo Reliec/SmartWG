@@ -27,4 +27,6 @@
     <string name="Null">null</string>
     <string name="confirmChanges">Confirm Changes</string>
     <string name="nameOfUser">nameOfUser</string>
+    <string name="Amount">Amount</string>
+    <string name="shoppingListTitle">ShoppingListTitle</string>
 </resources>

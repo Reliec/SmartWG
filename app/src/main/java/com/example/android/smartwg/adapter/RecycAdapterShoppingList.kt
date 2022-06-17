@@ -31,10 +31,6 @@ class RecycAdapterShoppingList(
     }
 
     override fun onBindViewHolder(holder: RecycAdapterShoppingList.MyViewHolder, position: Int) {
-        val repository = Repository()
-        val viewModelFactory = MainViewModelFactory(repository)
-        // viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-
         val bEdit = holder.itemView.vEditShoppingList
         val bRemove = holder.itemView.vRemoveShoppingList
         val bConfirm = holder.itemView.vConfirmShoppingListChanges
