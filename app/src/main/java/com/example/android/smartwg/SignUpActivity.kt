@@ -12,6 +12,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.smartwg.repository.Repository
 
+/**
+ * Users can create new accounts in this Activity. A bit of information about the user is required to create an Account.
+ * Afer the account is successfully created users are able to SignIn.
+ *
+ */
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel

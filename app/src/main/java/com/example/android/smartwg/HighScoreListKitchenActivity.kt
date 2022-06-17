@@ -21,6 +21,11 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * Activity that shows the Highscores of the Bathroom. Users can create new Entrys
+ * to show that they cleaned the room at a specific timestamp.
+ *
+ */
 class HighScoreListKitchenActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel

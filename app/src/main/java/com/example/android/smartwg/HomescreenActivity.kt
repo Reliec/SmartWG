@@ -12,6 +12,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.android.smartwg.repository.Repository
 import com.example.myapplication.util.globals
 
+/**
+ * This Activity grants access to nearly all other Activities that the application offers. It can be seen
+ * as a hub where the user has the choice to choose what to do.
+ *
+ */
 class HomescreenActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
