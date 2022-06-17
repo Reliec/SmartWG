@@ -39,6 +39,9 @@ class RecycAdapterHighscore() : RecyclerView.Adapter<RecycAdapterHighscore.MyVie
 
         myList = newList
         myList = myList.sortedByDescending { it.DATE }
+        if(myList.size > 10){
+            myList = myList.subList(0,10)
+        }
         notifyDataSetChanged()
     }
 }
