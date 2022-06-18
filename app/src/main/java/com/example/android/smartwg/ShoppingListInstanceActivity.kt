@@ -1,26 +1,27 @@
 package com.example.android.smartwg
 
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.text.InputType
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.forEach
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.android.smartwg.adapter.RecycAdapterHighscore
 import com.example.android.smartwg.adapter.RecycAdapterShoppingListItems
 import com.example.android.smartwg.repository.Repository
 import com.example.android.smartwg.util.SwipeToDeleteCallback
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_shopping_list_instance.*
 
 
 class ShoppingListInstanceActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
-    private lateinit var recyclerViewShoppingListItems: RecyclerView
+    // private lateinit var recyclerViewShoppingListItems: RecyclerView
     lateinit var constraintLayout: ConstraintLayout
 
 
@@ -37,18 +38,48 @@ class ShoppingListInstanceActivity : AppCompatActivity() {
 
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
+
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         constraintLayout = findViewById(R.id.constraintLayoutShoppingListInstance);
-        // recAdapterShoppingListItems = RecycAdapterShoppingListItems(viewModel, this)
         setupRecyclerViewShoppingListItems()
 
+        val typefaceItalic = Typeface.create(Typeface.SANS_SERIF, Typeface.ITALIC)
+        var vEditShoppingListItems = findViewById<ImageView>(R.id.vEditShoppingListItems)
+        var vConfirmShoppingListItemChanges = findViewById<ImageView>(R.id.vConfirmShoppingListItemChanges)
         val tvShoppingListTitle = findViewById<TextView>(R.id.tvShoppingListTitle)
         val bCreateShoppingListitem = findViewById<Button>(R.id.bCreateShoppingListItem)
         val shoppingListID = intent.getIntExtra("Shopping List ID", 0)
         tvShoppingListTitle.text = intent.getStringExtra("Shopping List Title")
 
         getShoppingListItems()
-        //enableSwipeToDelete()
+        enableSwipeToDelete()
+
+        var tvItemTitle = recyclerViewShoppingListItems.findViewById<EditText>(R.id.tvItemTitle)
+        var tvItemUnit = recyclerViewShoppingListItems.findViewById<EditText>(R.id.tvItemUnit)
+        var tvItemAmount = recyclerViewShoppingListItems.findViewById<EditText>(R.id.tvItemAmount)
+        vEditShoppingListItems.setOnClickListener {
+            recyclerViewShoppingListItems.forEach {
+                tvItemTitle.typeface = typefaceItalic
+                tvItemUnit.typeface = typefaceItalic
+                tvItemAmount.typeface = typefaceItalic
+
+                tvItemTitle.inputType = InputType.TYPE_CLASS_TEXT
+                tvItemAmount.inputType = InputType.TYPE_CLASS_TEXT
+                tvItemUnit.inputType = InputType.TYPE_CLASS_TEXT
+            }
+        }
+
+        vConfirmShoppingListItemChanges.setOnClickListener {
+            recyclerViewShoppingListItems.forEach {
+                tvItemTitle.typeface = Typeface.SANS_SERIF
+                tvItemUnit.typeface = Typeface.SANS_SERIF
+                tvItemAmount.typeface = Typeface.SANS_SERIF
+
+                tvItemTitle.inputType = InputType.TYPE_NULL
+                tvItemAmount.inputType = InputType.TYPE_NULL
+                tvItemUnit.inputType = InputType.TYPE_NULL
+            }
+        }
 
         bCreateShoppingListitem.setOnClickListener {
             viewModel.createShoppingListItem(shoppingListID)
@@ -99,7 +130,7 @@ class ShoppingListInstanceActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerViewShoppingListItems() {
-        recyclerViewShoppingListItems = RecyclerView(this)
+        // recyclerViewShoppingListItems = RecyclerView(this)
         recyclerViewShoppingListItems.adapter = recAdapterShoppingListItems
         recyclerViewShoppingListItems.layoutManager = LinearLayoutManager(this)
         recyclerViewShoppingListItems.isNestedScrollingEnabled = false

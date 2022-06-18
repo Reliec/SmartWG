@@ -1,5 +1,6 @@
 package com.example.android.smartwg.adapter
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import com.example.android.smartwg.MainViewModel
 import com.example.android.smartwg.R
 import com.example.android.smartwg.ShoppingListInstanceActivity
 import com.example.android.smartwg.model.ShoppingListItem
+import kotlinx.android.synthetic.main.activity_shopping_list_instance.view.*
 import kotlinx.android.synthetic.main.row_layout_shopping_list_items.view.*
 
 class RecycAdapterShoppingListItems(
@@ -29,14 +31,28 @@ class RecycAdapterShoppingListItems(
         holder: RecycAdapterShoppingListItems.MyViewHolder,
         position: Int
     ) {
-        var itemAmount = shoppingListItemList[position].amount
-        var itemTitle = shoppingListItemList[position].title
-        var itemUnit = shoppingListItemList[position].unit
+        var itemAmount = shoppingListItemList[position].AMOUNT
+        var itemTitle = shoppingListItemList[position].TITLE
+        var itemUnit = shoppingListItemList[position].UNIT
 
-        holder.itemView.tvItemTitle.text = itemTitle
-        holder.itemView.tvItemAmount.text = itemAmount.toString()
-        holder.itemView.tvItemUnit.text = itemUnit
+        var cbCheckbox = holder.itemView.cbCheckBox
+        var tvItemTitle = holder.itemView.tvItemTitle
+        var tvItemAmount = holder.itemView.tvItemAmount
+        var tvItemUnit  = holder.itemView.tvItemUnit
 
+        tvItemTitle.setText(itemTitle)
+        tvItemAmount.setText(itemAmount.toString())
+        tvItemUnit.setText(itemUnit)
+
+        cbCheckbox.setOnClickListener {
+            if (cbCheckbox.isChecked) {
+                tvItemTitle.paintFlags = tvItemTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                holder.itemView.ShoppingListItemView.alpha = 0.6f
+            } else {
+                tvItemTitle.paintFlags = tvItemTitle.paintFlags and (Paint.STRIKE_THRU_TEXT_FLAG).inv()
+                holder.itemView.ShoppingListItemView.alpha = 1.0f
+            }
+        }
     }
 
     override fun getItemCount(): Int {
@@ -51,6 +67,7 @@ class RecycAdapterShoppingListItems(
     fun removeItem(position: Int) {
         viewModel.deleteShoppingListItem(shoppingListItemList[position].ID)
         notifyItemRemoved(position)
+        shoppingListInstanceActivity.recreate()
     }
 
     fun getData(): List<ShoppingListItem> {

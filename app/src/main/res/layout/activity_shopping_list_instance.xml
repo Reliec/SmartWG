@@ -9,63 +9,42 @@
     android:background="@drawable/app_background"
     >
 
+
     <ImageView
         android:id="@+id/shoppingCartIconInstance"
-        android:layout_width="52dp"
-        android:layout_height="36dp"
+        android:layout_width="48dp"
+        android:layout_height="42dp"
         android:layout_gravity="center"
-        android:background="@drawable/app_background"
         android:src="@drawable/ic_baseline_shopping_basket_24"
+
         android:textAlignment="center"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/recyclerViewShoppingListItems"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
-        app:layout_constraintStart_toEndOf="@+id/tvShoppingListTitle" />
-
-    <Button
-        android:id="@+id/bCreateShoppingListItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:background="@drawable/button_background"
-        android:padding="1dp"
-        android:text="@string/Plus"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20sp"
         android:translationZ="90dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shoppingCartIconInstance"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvShoppingListTitle"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewShoppingListItems"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/recyclerViewShoppingListItems"
+        app:layout_constraintTop_toTopOf="@+id/tvShoppingListTitle" />
 
     <TextView
         android:id="@+id/tvShoppingListTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="268dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/button_background"
+        android:gravity="start|center_vertical"
+        android:paddingStart="8dp"
         android:text="@string/shoppingListTitle"
         android:textColor="#FAF7F7"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewShoppingListItems"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerViewShoppingListItems"
-        app:layout_constraintHorizontal_bias="0.46"
-        app:layout_constraintStart_toStartOf="parent"
+        android:translationZ="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shoppingCartIconInstance"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewShoppingListItems"
-        android:layout_width="324dp"
-        android:layout_height="494dp"
-        app:layout_constraintBottom_toTopOf="@+id/bCreateShoppingListItem"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintVertical_bias="0.100000024" />
 
     <ImageView
-        android:id="@+id/vEditShoppingList"
+        android:id="@+id/vEditShoppingListItems"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="TODO"
@@ -73,23 +52,58 @@
         android:src="@drawable/ic_baseline_edit_24"
         android:translationZ="90dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewShoppingListItems"
+        app:layout_constraintBottom_toBottomOf="@+id/tvShoppingListTitle"
         app:layout_constraintEnd_toEndOf="@+id/recyclerViewShoppingListItems"
-        app:layout_constraintStart_toEndOf="@+id/shoppingCartIconInstance" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/recyclerViewShoppingListItems"
+        app:layout_constraintTop_toTopOf="@+id/tvShoppingListTitle" />
 
     <ImageView
-        android:id="@+id/vConfirmShoppingListChanges"
+        android:id="@+id/vConfirmShoppingListItemChanges"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="TODO"
         android:padding="3dp"
         android:src="@drawable/ic_baseline_check_24"
-        android:textColorHighlight="#00FFFFFF"
-        android:textColorLink="#00FFFFFF"
+        android:textColorHighlight="#F6F4F4"
+        android:textColorLink="#00FFFCFC"
         android:translationZ="90dp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewShoppingListItems"
+        app:layout_constraintBottom_toBottomOf="@+id/tvShoppingListTitle"
         app:layout_constraintEnd_toEndOf="@+id/recyclerViewShoppingListItems"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/recyclerViewShoppingListItems" />
+        app:layout_constraintStart_toStartOf="@+id/recyclerViewShoppingListItems"
+        app:layout_constraintTop_toTopOf="@+id/tvShoppingListTitle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewShoppingListItems"
+        android:layout_width="324dp"
+        android:layout_height="494dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvShoppingListTitle" />
+
+    <Button
+        android:id="@+id/bCreateShoppingListItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_background"
+        android:padding="1dp"
+        android:text="@string/Plus"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:translationZ="90dp"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewShoppingListItems"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/recyclerViewShoppingListItems"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewShoppingListItems" />
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

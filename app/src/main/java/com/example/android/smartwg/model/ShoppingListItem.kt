@@ -4,7 +4,7 @@ import android.text.Editable
 
 data class ShoppingListItem(
     val ID: Int,
-    val title: Editable,
-    val amount: Int,
-    val unit: String,
-    val shoppingList: Int)
+    val TITLE: String,
+    val AMOUNT: Int,
+    val UNIT: String,
+    val SHOPPING_LIST: Int)

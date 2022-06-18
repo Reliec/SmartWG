@@ -5,26 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/app_background"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
     android:visibility="visible">
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/ShoppingListItemView"
-        android:layout_width="364dp"
-        android:layout_height="50dp"
+        android:layout_width="269dp"
+        android:layout_height="48dp"
+
         android:background="#00FFFFFF"
-        app:cardBackgroundColor="#49876D"
+        app:cardBackgroundColor="#807E7E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
+        android:inputType="none"
         android:id="@+id/tvItemTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
-        android:inputType="none"
         android:minWidth="48dp"
         android:minHeight="48dp"
         android:padding="3dp"
@@ -34,22 +37,28 @@
         android:translationZ="90dp"
         app:layout_constraintBottom_toBottomOf="@+id/ShoppingListItemView"
         app:layout_constraintEnd_toEndOf="@+id/ShoppingListItemView"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="@+id/ShoppingListItemView"
         app:layout_constraintTop_toTopOf="@+id/ShoppingListItemView"
         tools:ignore="Autofill,LabelFor" />
 
     <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="47dp"
-        android:layout_height="50dp"
+        android:id="@+id/cbCheckBox"
+        style="@android:style/Widget.CompoundButton.CheckBox"
+        android:layout_width="32dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:buttonTint="#FFFAFA"
+        android:checked="false"
         android:gravity="center"
+        android:translationZ="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ShoppingListItemView"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <EditText
         android:id="@+id/tvItemAmount"
+        android:inputType="none"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Amount"
@@ -59,10 +68,12 @@
         app:layout_constraintEnd_toEndOf="@+id/ShoppingListItemView"
         app:layout_constraintHorizontal_bias="0.76"
         app:layout_constraintStart_toStartOf="@+id/ShoppingListItemView"
-        app:layout_constraintTop_toTopOf="@+id/ShoppingListItemView" />
+        app:layout_constraintTop_toTopOf="@+id/ShoppingListItemView"
+        tools:ignore="Autofill,LabelFor" />
 
-    <TextView
+    <EditText
         android:id="@+id/tvItemUnit"
+        android:inputType="none"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Unit"
@@ -72,7 +83,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toEndOf="@+id/tvItemAmount"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Autofill,LabelFor" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
