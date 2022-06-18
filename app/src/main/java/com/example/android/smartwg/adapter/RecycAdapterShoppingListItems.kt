@@ -18,6 +18,7 @@ class RecycAdapterShoppingListItems(
 ) : RecyclerView.Adapter<RecycAdapterShoppingListItems.MyViewHolder>(){
     private var shoppingListItemList:List<ShoppingListItem> = emptyList<ShoppingListItem>()
 
+
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(
@@ -34,15 +35,19 @@ class RecycAdapterShoppingListItems(
         var itemAmount = shoppingListItemList[position].AMOUNT
         var itemTitle = shoppingListItemList[position].TITLE
         var itemUnit = shoppingListItemList[position].UNIT
+        var itemID = shoppingListItemList[position].ID
+
 
         var cbCheckbox = holder.itemView.cbCheckBox
         var tvItemTitle = holder.itemView.tvItemTitle
         var tvItemAmount = holder.itemView.tvItemAmount
         var tvItemUnit  = holder.itemView.tvItemUnit
+        var tvItemID = holder.itemView.tvItemID
 
         tvItemTitle.setText(itemTitle)
         tvItemAmount.setText(itemAmount.toString())
         tvItemUnit.setText(itemUnit)
+        tvItemID.setText(itemID.toString())
 
         cbCheckbox.setOnClickListener {
             if (cbCheckbox.isChecked) {
@@ -68,6 +73,10 @@ class RecycAdapterShoppingListItems(
         viewModel.deleteShoppingListItem(shoppingListItemList[position].ID)
         notifyItemRemoved(position)
         shoppingListInstanceActivity.recreate()
+    }
+
+    fun getItem(position: Int): ShoppingListItem {
+        return shoppingListItemList[position]
     }
 
     fun getData(): List<ShoppingListItem> {

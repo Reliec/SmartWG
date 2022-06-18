@@ -140,4 +140,11 @@ class MainViewModel(private val repository: Repository): ViewModel() {
             echoStringResponse.value = response
         }
     }
+
+    fun updateShoppingListItemViewModel(id: Int, newTitle: String, newAmount: String, newUnit: String) {
+        viewModelScope.launch {
+            val response = repository.updateShoppingListItemRepo(id, newTitle, newAmount, newUnit)
+            echoStringResponse.value = response
+        }
+    }
 }

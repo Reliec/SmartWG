@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.InputType
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -17,6 +18,7 @@ import com.example.android.smartwg.repository.Repository
 import com.example.android.smartwg.util.SwipeToDeleteCallback
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_shopping_list_instance.*
+import kotlinx.android.synthetic.main.row_layout_shopping_list_boxes.*
 
 
 class ShoppingListInstanceActivity : AppCompatActivity() {
@@ -54,11 +56,12 @@ class ShoppingListInstanceActivity : AppCompatActivity() {
         getShoppingListItems()
         enableSwipeToDelete()
 
-        var tvItemTitle = recyclerViewShoppingListItems.findViewById<EditText>(R.id.tvItemTitle)
-        var tvItemUnit = recyclerViewShoppingListItems.findViewById<EditText>(R.id.tvItemUnit)
-        var tvItemAmount = recyclerViewShoppingListItems.findViewById<EditText>(R.id.tvItemAmount)
         vEditShoppingListItems.setOnClickListener {
             recyclerViewShoppingListItems.forEach {
+                var tvItemTitle = it.findViewById<EditText>(R.id.tvItemTitle)
+                var tvItemUnit = it.findViewById<EditText>(R.id.tvItemUnit)
+                var tvItemAmount = it.findViewById<EditText>(R.id.tvItemAmount)
+
                 tvItemTitle.typeface = typefaceItalic
                 tvItemUnit.typeface = typefaceItalic
                 tvItemAmount.typeface = typefaceItalic
@@ -66,11 +69,18 @@ class ShoppingListInstanceActivity : AppCompatActivity() {
                 tvItemTitle.inputType = InputType.TYPE_CLASS_TEXT
                 tvItemAmount.inputType = InputType.TYPE_CLASS_TEXT
                 tvItemUnit.inputType = InputType.TYPE_CLASS_TEXT
+
+                vEditShoppingListItems.visibility = View.INVISIBLE
+                vConfirmShoppingListItemChanges.visibility = View.VISIBLE
             }
         }
 
         vConfirmShoppingListItemChanges.setOnClickListener {
             recyclerViewShoppingListItems.forEach {
+                var tvItemTitle = it.findViewById<EditText>(R.id.tvItemTitle)
+                var tvItemUnit = it.findViewById<EditText>(R.id.tvItemUnit)
+                var tvItemAmount = it.findViewById<EditText>(R.id.tvItemAmount)
+                var tvItemID = it.findViewById<TextView>(R.id.tvItemID)
                 tvItemTitle.typeface = Typeface.SANS_SERIF
                 tvItemUnit.typeface = Typeface.SANS_SERIF
                 tvItemAmount.typeface = Typeface.SANS_SERIF
@@ -78,6 +88,16 @@ class ShoppingListInstanceActivity : AppCompatActivity() {
                 tvItemTitle.inputType = InputType.TYPE_NULL
                 tvItemAmount.inputType = InputType.TYPE_NULL
                 tvItemUnit.inputType = InputType.TYPE_NULL
+
+                vEditShoppingListItems.visibility = View.VISIBLE
+                vConfirmShoppingListItemChanges.visibility = View.INVISIBLE
+
+
+                var id = tvItemID.text.toString().toInt()
+                var newTitle = tvItemTitle.text.toString()
+                var newAmount = tvItemAmount.text.toString()
+                var newUnit = tvItemUnit.text.toString()
+                viewModel.updateShoppingListItemViewModel(id, newTitle, newAmount, newUnit)
             }
         }
 

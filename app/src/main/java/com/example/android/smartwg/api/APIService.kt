@@ -116,4 +116,13 @@ interface APIService {
         @Field("SHOPPINGLISTITEMID")shoppingListItemID: Int
     ): Response<String>
 
+    @FormUrlEncoded
+    @PUT("UPDATESHOPPINGLISTITEM")
+    suspend fun updateShoppingListItem(
+        @Field("ID")id: Int,
+        @Field("newTITLE")newTitle: String,
+        @Field("newAMOUNT")newAmount: String,
+        @Field("newUNIT")newUnit: String
+    ): Response<String>?
+
 }

@@ -85,4 +85,8 @@ class Repository {
     suspend fun deleteShoppingListItemRepo(shoppingListItemID: Int): Response<String>? {
         return RetrofitInstance.api.deleteShoppingListItem(shoppingListItemID)
     }
+
+    suspend fun updateShoppingListItemRepo(id: Int, newTitle: String, newAmount: String, newUnit: String): Response<String>? {
+        return RetrofitInstance.api.updateShoppingListItem(id, newTitle, newAmount, newUnit)
+    }
 }
