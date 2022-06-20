@@ -12,6 +12,12 @@ import com.example.android.smartwg.model.ShoppingListItem
 import kotlinx.android.synthetic.main.activity_shopping_list_instance.view.*
 import kotlinx.android.synthetic.main.row_layout_shopping_list_items.view.*
 
+/**
+ * RecylcerAdapter implementation for Shopping List Items
+ *
+ * @param viewModel
+ * @param shoppingListInstanceActivity
+ */
 class RecycAdapterShoppingListItems(
     val viewModel: MainViewModel,
     val shoppingListInstanceActivity: ShoppingListInstanceActivity,
@@ -32,17 +38,17 @@ class RecycAdapterShoppingListItems(
         holder: RecycAdapterShoppingListItems.MyViewHolder,
         position: Int
     ) {
-        var itemAmount = shoppingListItemList[position].AMOUNT
-        var itemTitle = shoppingListItemList[position].TITLE
-        var itemUnit = shoppingListItemList[position].UNIT
-        var itemID = shoppingListItemList[position].ID
+        val itemAmount = shoppingListItemList[position].AMOUNT
+        val itemTitle = shoppingListItemList[position].TITLE
+        val itemUnit = shoppingListItemList[position].UNIT
+        val itemID = shoppingListItemList[position].ID
 
 
-        var cbCheckbox = holder.itemView.cbCheckBox
-        var tvItemTitle = holder.itemView.tvItemTitle
-        var tvItemAmount = holder.itemView.tvItemAmount
-        var tvItemUnit  = holder.itemView.tvItemUnit
-        var tvItemID = holder.itemView.tvItemID
+        val cbCheckbox = holder.itemView.cbCheckBox
+        val tvItemTitle = holder.itemView.tvItemTitle
+        val tvItemAmount = holder.itemView.tvItemAmount
+        val tvItemUnit  = holder.itemView.tvItemUnit
+        val tvItemID = holder.itemView.tvItemID
 
         tvItemTitle.setText(itemTitle)
         tvItemAmount.setText(itemAmount.toString())
@@ -60,23 +66,34 @@ class RecycAdapterShoppingListItems(
         }
     }
 
+    /**
+     * Gets the shopping list item count
+     *
+     * @return shopping list item count
+     */
     override fun getItemCount(): Int {
-        return shoppingListItemList.size
+        return shoppingListItemList.size-1
     }
 
+    /**
+     * Sets shopping list item data and notifes the adapter
+     *
+     * @param shoppingListItemListIn shopping list item data
+     */
     fun setData(shoppingListItemListIn: List<ShoppingListItem>) {
         shoppingListItemList = shoppingListItemListIn
         notifyDataSetChanged()
     }
 
+    /**
+     * Remove an item from the shopping list
+     *
+     * @param position
+     */
     fun removeItem(position: Int) {
         viewModel.deleteShoppingListItem(shoppingListItemList[position].ID)
+        shoppingListInstanceActivity.getShoppingListItems()
         notifyItemRemoved(position)
-        shoppingListInstanceActivity.recreate()
-    }
-
-    fun getItem(position: Int): ShoppingListItem {
-        return shoppingListItemList[position]
     }
 
     fun getData(): List<ShoppingListItem> {

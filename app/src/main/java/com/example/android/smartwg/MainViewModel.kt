@@ -10,9 +10,11 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 
 /**
- * Class that contains Mutable live data that is send from the database and can be used in the appl
- * ication. Its also the first layer to call the Endpoints from Repository.
+ * Class that contains Mutable live data that is send from the database and can be used in the application.
  *
+ * Its also the first layer to call the Endpoints from Repository.
+ * Function names and parameteres are self-explanatory.
+ * For further information please refer to the api documentation.
  * @property repository
  */
 class MainViewModel(private val repository: Repository): ViewModel() {
@@ -23,7 +25,7 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     var userListResponse: MutableLiveData<Response<List<User>>> = MutableLiveData()
     var userWherePasswordResponse: MutableLiveData<Response<List<User>>> = MutableLiveData();
     var highscoreResponse: MutableLiveData<Response<List<Highscore>>> = MutableLiveData()
-    var shoppingListResponse: MutableLiveData<Response<List<ShoppingList>>> = MutableLiveData()
+    var shoppingListsResponse: MutableLiveData<Response<List<ShoppingList>>> = MutableLiveData()
     val shoppingListItemsResponse: MutableLiveData<Response<List<ShoppingListItem>>> = MutableLiveData()
     var toiletStatusResponse: MutableLiveData<Response<List<ToiletStatus>>> = MutableLiveData()
     var wgbStringResponse: MutableLiveData<Response<List<WGB>>> = MutableLiveData()
@@ -81,7 +83,7 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     fun getShoppingListsFromUserViewM(USERID: Int?) {
         viewModelScope.launch {
             val response = repository.getShoppingListsFromUserRepo(USERID)
-            shoppingListResponse.value = response
+            shoppingListsResponse.value = response
         }
     }
 

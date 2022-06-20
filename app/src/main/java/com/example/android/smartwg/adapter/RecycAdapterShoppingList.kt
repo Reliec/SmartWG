@@ -14,6 +14,11 @@ import com.example.android.smartwg.repository.Repository
 import com.example.myapplication.util.globals
 import kotlinx.android.synthetic.main.row_layout_shopping_list_boxes.view.*
 
+/**
+ * Adapter for managing shopping lists in the recycler view
+ * @param viewModelIn
+ * @param parentActivityIn
+ */
 class RecycAdapterShoppingList(
     viewModelIn: MainViewModel,
     parentActivityIn: ShoppingListOverviewActivity
@@ -24,11 +29,20 @@ class RecycAdapterShoppingList(
 
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
+    /**
+     * Maps layout for shopping lists to the recycler view
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_layout_shopping_list_boxes,parent,false))
 
     }
 
+    /**
+     * Maps buttons, symbols, etc. to a shopping list and implements their required logic
+     *
+     * @param holder
+     * @param position
+     */
     override fun onBindViewHolder(holder: RecycAdapterShoppingList.MyViewHolder, position: Int) {
         val bEdit = holder.itemView.vEditShoppingList
         val bRemove = holder.itemView.vRemoveShoppingList
@@ -64,22 +78,46 @@ class RecycAdapterShoppingList(
             tTitle.inputType = InputType.TYPE_NULL
             tTitle.typeface = Typeface.SANS_SERIF
             viewModel.updateShoppingListViewM(globals.userId, shoppingListID, holder.itemView.tvTitle.text)
+            viewModel.echoStringResponse.observe(parentActivity) {
+                parentActivity.getShoppingLists()
+                notifyItemChanged(position)
+            }
         }
 
         bRemove.setOnClickListener {
             viewModel.deleteShoppingListFromUserViewM(globals.userId, shoppingListID)
-            notifyItemRemoved(position)
-            parentActivity.recreate()
+            viewModel.echoStringResponse.observe(parentActivity) {
+                parentActivity.getShoppingLists()
+                notifyItemRemoved(position)
+            }
         }
 
     }
 
+    /**
+     * Returns the shopping list count
+     * @return shopping list count
+     */
     override fun getItemCount(): Int {
-        return shoppingListList.size
+        return shoppingListList.size-1
     }
 
+    /**
+     * Sets the list containing the shopping lists list data and notifies the recycler view
+     *
+     * @param shoppingListListIn Data to be set
+     */
     fun setData(shoppingListListIn : List<ShoppingList>) {
         shoppingListList = shoppingListListIn
         notifyDataSetChanged()
+    }
+
+    /**
+     * Returns a list of shopping list
+     *
+     * @return current shoppingListList
+     */
+    fun getData(): List<ShoppingList> {
+        return shoppingListList
     }
 }

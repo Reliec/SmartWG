@@ -11,6 +11,9 @@ import com.example.android.smartwg.repository.Repository
 import com.example.myapplication.util.globals
 import kotlinx.android.synthetic.main.activity_shopping_list_overview.*
 
+/**
+ * Handles overview activity for shopping lists
+ */
 class ShoppingListOverviewActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
 
@@ -18,6 +21,13 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
         RecycAdapterShoppingList(viewModel, this)
     }
 
+    /**
+     * Initialises the activity on creation.
+     *
+     * Maps Symbols, Buttons, etc. and fetches shopping Lists
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shopping_list_overview)
@@ -27,24 +37,24 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         setupRecyclerViewShoppingList()
-        getShoppingList()
+        getShoppingLists()
 
 
         val bCreateShoppingList = findViewById<Button>(R.id.bCreateNewShoppingList)
 
         bCreateShoppingList.setOnClickListener {
             viewModel.createShoppingListFromUserViewM(globals.userId)
-            getShoppingList()
-            recreate()
+            getShoppingLists()
+            recAdapterShoppingListOverview.notifyItemInserted(recAdapterShoppingListOverview.getData().size-1)
         }
     }
 
     /**
-     * @
+     * Fetches shopping lists
      */
-    fun getShoppingList() {
+    fun getShoppingLists() {
         viewModel.getShoppingListsFromUserViewM(globals.userId)
-        viewModel.shoppingListResponse.observe(this
+        viewModel.shoppingListsResponse.observe(this
         ) { shoppingListResponse ->
             if (shoppingListResponse != null) {
                 if (shoppingListResponse.isSuccessful) {
@@ -67,7 +77,9 @@ class ShoppingListOverviewActivity : AppCompatActivity() {
     }
 
 
-
+    /**
+     *Sets up the recycler view and its' adapter.
+     */
     private fun setupRecyclerViewShoppingList() {
         recyclerViewShoppingListOverview.adapter = recAdapterShoppingListOverview
         recyclerViewShoppingListOverview.layoutManager = LinearLayoutManager(this)

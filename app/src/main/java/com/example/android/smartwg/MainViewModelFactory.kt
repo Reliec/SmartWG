@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.android.smartwg.repository.Repository
 
 /**
- * Factory Pattern to creaty ViewModels in order to send and get data from the backend.
+ * Factory Pattern create ViewModels. Used to send and receive data from the backend.
  *
  * @property repository
  */
